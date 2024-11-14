@@ -1,0 +1,71 @@
+gpu_id: 0
+use_gpu: True
+show_progress: False
+print_loss: False
+seed: 2024
+
+# data settings
+dataset: itm
+field_separator: ","
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+LABEL_FIELD: rating
+MULTI_LABEL_FIELD: ['app', 'data', 'ease']
+RATING_RANGE: [1, 5]
+# rating threshold to determine the relevance of an item
+threshold: {'rating': 0}
+
+load_col: ~  # using ~ to load all columns in data
+neg_sampling: ~
+
+# model and evaluation setting
+model: CombRP
+
+learner: adam
+eval_args:
+  # split: {'RS':[0.8,0.1,0.1]}
+  split: {'CV': 5, 'parallel': True, 'num_processes': 4} # N-fold cross validation by multiprocessing
+  group_by: user
+  order: RO
+  mode: labeled
+
+# [Metrics for the rating prediction task]
+# metrics: ['RMSE', 'MAE', 'AUC']
+# valid_metric: RMSE
+
+# [Metrics for the Top-N recommendation task]
+topk: [10, 20, 30]
+metrics: ['Recall', 'Precision', 'NDCG']
+valid_metric: Recall@10
+
+# specific settings for training models to predict multi-criteria ratings
+# using a traditional recommender to predict criteria ratings independently
+criteria_model: {'model': 'CriteriaRP',
+                 'GENERAL_MODEL': 'NeuMF',
+                 'mf_embedding_size': 512,
+                 'mlp_embedding_size': 512,
+                 'mlp_hidden_size': [128, 64, 32, 16, 8, 4],
+                 'learning_rate': 0.001,
+                 'dropout_prob': 0.1,
+                 'epochs': 50,
+                 'train_batch_size': 4000,
+                 'mf_train': True,
+                 'mlp_train': True,
+                 'use_pretrain': False,
+                 'parallel': False,
+                 'metrics': [ 'RMSE', 'MAE', 'AUC' ],
+                 'valid_metric': RMSE,
+                }
+
+# specific settings for training models to predict the overall rating
+# using predicted criteria ratings to estimate the overall rating via MLP
+overall_model: {'model': 'OverallRP',
+                'mlp_embedding_size': 0,  # if set to 0, no criteria rating embedding
+                'mlp_hidden_size': [512,256,128,64,32],
+                'learning_rate': 0.001,
+                'dropout_prob': 0.001,
+                'epochs':50,
+                'train_batch_size': 6000,
+                'metrics': [ 'RMSE', 'MAE', 'AUC' ],
+                'valid_metric': RMSE,
+                }

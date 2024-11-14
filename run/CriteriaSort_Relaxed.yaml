@@ -1,0 +1,80 @@
+gpu_id: 0
+use_gpu: True
+show_progress: False
+print_loss: False
+seed: 2024
+
+# data settings
+dataset: itm
+field_separator: ","
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+LABEL_FIELD: rating
+MULTI_LABEL_FIELD: ['app', 'data', 'ease']
+RATING_RANGE: [1, 5]
+threshold: {'rating': 0} # rating threshold to determine the relevance of an item
+
+load_col: ~  # using ~ to load all columns in data
+neg_sampling: ~
+
+# model and evaluation setting
+model: CriteriaSort
+num_of_runs: 1 # how many times it will run for a same configuration
+
+learner: adam
+eval_args:
+  # split: {'RS':[0.8,0.1,0.1]}
+  split: {'CV': 5, 'parallel': True, 'num_processes': 4} # N-fold cross validation by multiprocessing
+  group_by: user
+  order: RO
+  mode: labeled
+
+# [Metrics for the rating prediction task]
+# metrics: ['RMSE', 'MAE', 'AUC']
+# valid_metric: RMSE
+
+# [Metrics for the Top-N recommendation task]
+topk: [10, 20, 30]
+metrics: ['Recall', 'Precision', 'NDCG']
+valid_metric: Recall@10
+
+# specific settings for training models to predict multi-criteria ratings
+# using a traditional recommender to predict criteria ratings independently
+criteria_model: {'model': 'MONeuMF',
+                 # define the weights for joint optimization. weights will be normalized later
+                 'criteria_weights': [ 1, 1, 1 ],
+                 'mf_embedding_size': 512,
+                 'mlp_embedding_size': 512,
+                 'mlp_hidden_size': [256, 128, 64, 32, 16, 8],
+                 'learning_rate': 0.01,
+                 'dropout_prob': 0.4,
+                 'epochs': 40,
+                 'train_batch_size': 6000,
+                 'mf_train': True,
+                 'mlp_train': True,
+                 'use_pretrain': False,
+                 'parallel': True,
+                 'metrics': [ 'RMSE', 'MAE', 'AUC' ],
+                 'valid_metric': RMSE
+                }
+
+# [options for relaxed sorting]
+# EpsilonDominance (with additional hyperparameter epsilon)
+# KDominance (with additional hyperparameter dominance_k)
+# GDominance (use FastNonDominatedSort and change error_margin)
+
+# reference (using relaxed sorting):
+# Zheng, Yong, and David Xuejun Wang. "Multi-Criteria Ranking by Using Relaxed Pareto Ranking Methods." Adjunct Proceedings of ACM UMAP. 2023.
+
+# Example: relaxed sorting by using GDominance
+sorting_algorithm: FastNonDominatedSort
+error_margin: 0.1
+
+# Example: relaxed sorting by using KDominance
+#sorting_algorithm: KDominance
+#dominance_k: 0.4
+
+# Example: relaxed sorting by using EpsilonDominance
+#sorting_algorithm: EpsilonDominance
+#epsilon: -0.1
+
