@@ -65,7 +65,7 @@ Three data sets, including ITM-Rec, OpenTable and Yahoo!Movies, are provided in 
 ## Major Releases
 | Releases | Date       |
 |----------|------------|
-| v1.0.0   | 11/13/2024 |
+| v1.0.0   | 11/24/2024 |
 
 
 ## Contributors
