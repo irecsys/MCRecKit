@@ -51,6 +51,22 @@ The library was tested by using the following environments:
 
 Note that you may need to downgrade numpy to 1.20.0 for compatibility concerns.
 
+## Quick-Start
+With the source code, you can use the provided script for initial usage of our library:
+
+```bash
+python -m run_config run/CombRP_Independent.yaml
+```
+
+## Data Sets
+Three data sets, including ITM-Rec, OpenTable and Yahoo!Movies, are provided in the 'dataset' folder.
+
+
+## Major Releases
+| Releases | Date       |
+|----------|------------|
+| v1.0.0   | 11/13/2024 |
+
 
 ## Contributors
 - Dr. Yong Zheng, Illinois Institute of Technology, USA
