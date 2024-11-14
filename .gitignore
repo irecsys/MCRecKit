@@ -6,6 +6,7 @@
 *.ttf
 *.xml
 *.iml
+*config.txt
 events.out.*
 saved/
 log_tensorboard/
