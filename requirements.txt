@@ -1,0 +1,6 @@
+recbole==1.0.1
+numpy==1.20.0
+lightgbm
+xgboost
+numba
+pymoo
