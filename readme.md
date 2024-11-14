@@ -1,4 +1,8 @@
-## Introduction
+## MCRecKit: Introduction
+
+[![License](https://img.shields.io/badge/License-MIT-orange.svg)](./LICENSE)
+[![python](https://badges.aleen42.com/src/python.svg)](https://badges.aleen42.com/src/python.svg)
+
 MCRecKit is a Python-based open-source library for multi-criteria
 recommender systems (MCRSs). It was built upon RecBole v1.0.1. 
 
