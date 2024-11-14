@@ -8,7 +8,6 @@
 *.iml
 events.out.*
 saved/
-log/
 log_tensorboard/
 doc/
 **/__pycache__/
