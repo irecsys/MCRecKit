@@ -1,0 +1,15 @@
+*.bak
+*.log
+*.pth
+*.pyc
+*.zip
+*.ttf
+*.xml
+*.iml
+events.out.*
+saved/
+log/
+log_tensorboard/
+doc/
+**/__pycache__/
+.idea/
