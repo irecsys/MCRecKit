@@ -22,6 +22,8 @@ class MCConfig(Config):
             self._general_model_config_dict(self.variable_config_dict['GENERAL_MODEL'])
 
     def _init_parameters_category(self):
+        """Output arguments to logs by categories
+        """
         self.parameters = dict()
         self.parameters['General'] = general_arguments
         self.parameters['Training'] = training_arguments
