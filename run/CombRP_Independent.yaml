@@ -20,7 +20,6 @@ neg_sampling: ~
 
 # model and evaluation setting
 model: CombRP
-
 learner: adam
 eval_args:
   # split: {'RS':[0.8,0.1,0.1]}
@@ -30,8 +29,8 @@ eval_args:
   mode: labeled
 
 # [Metrics for the rating prediction task]
-# metrics: ['RMSE', 'MAE', 'AUC']
-# valid_metric: RMSE
+#metrics: ['RMSE', 'MAE', 'AUC']
+#valid_metric: RMSE
 
 # [Metrics for the Top-N recommendation task]
 topk: [10, 20, 30]

@@ -19,8 +19,6 @@ neg_sampling: ~
 
 # model and evaluation setting
 model: CriteriaSort
-num_of_runs: 1 # how many times it will run for a same configuration
-
 learner: adam
 eval_args:
   # split: {'RS':[0.8,0.1,0.1]}

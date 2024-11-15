@@ -19,8 +19,6 @@ neg_sampling: ~
 
 # model and evaluation setting
 model: CriteriaSort
-num_of_runs: 1 # how many times it will run for a same configuration
-
 learner: adam
 eval_args:
   # split: {'RS':[0.8,0.1,0.1]}
@@ -45,11 +43,11 @@ criteria_model: {'model': 'MONeuMF',
                  'criteria_weights': [ 1, 1, 1 ],
                  'mf_embedding_size': 512,
                  'mlp_embedding_size': 512,
-                 'mlp_hidden_size': [256, 128, 64, 32, 16, 8],
+                 'mlp_hidden_size': [256, 128, 64, 32, 16],
                  'learning_rate': 0.01,
                  'dropout_prob': 0.4,
                  'epochs': 40,
-                 'train_batch_size': 6000,
+                 'train_batch_size': 2000,
                  'mf_train': True,
                  'mlp_train': True,
                  'use_pretrain': False,
@@ -67,14 +65,14 @@ criteria_model: {'model': 'MONeuMF',
 # Zheng, Yong, and David Xuejun Wang. "Multi-Criteria Ranking by Using Relaxed Pareto Ranking Methods." Adjunct Proceedings of ACM UMAP. 2023.
 
 # Example: relaxed sorting by using GDominance
-sorting_algorithm: FastNonDominatedSort
-error_margin: 0.1
+#sorting_algorithm: FastNonDominatedSort
+#error_margin: 0.1
 
 # Example: relaxed sorting by using KDominance
 #sorting_algorithm: KDominance
 #dominance_k: 0.4
 
 # Example: relaxed sorting by using EpsilonDominance
-#sorting_algorithm: EpsilonDominance
-#epsilon: -0.1
+sorting_algorithm: EpsilonDominance
+epsilon: 0.1
 

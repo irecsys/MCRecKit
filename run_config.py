@@ -41,48 +41,26 @@ if __name__ == '__main__':
     # copy config file
     shutil.copyfile(config_file_list[0], config_file_name)
 
-    # start testing loop
-    count = 0
-    stop = False
     df_all_results = pd.DataFrame()
 
-    # number of loops
-    num_of_tests = config['num_of_runs']
-    if num_of_tests is None or num_of_tests == 0:
-        num_of_tests = 1
+    # get data
+    dataset = create_dataset(copy.deepcopy(config))
+    print('\nDataset facts:')
+    print(dataset)
 
-    while count < num_of_tests:
-        print('Running Loop:', str(count + 1) + ' / ' + str(num_of_tests))
+    # run model training and testing
+    results = wft.run_model_training(dataset, config, show_progress=False, saved=False, load_best_model=False,
+                                     run_serial=run_serial)
 
-        # get data
-        dataset = create_dataset(copy.deepcopy(config))
-        print('\nDataset facts:')
-        print(dataset)
+    # convert results to data frame
+    df_results = pd.DataFrame(results.items())
+    df_results = pd.pivot_table(df_results, values=1, columns=0)
 
-        # run model training and testing
-        results = wft.run_model_training(dataset, config, show_progress=False, saved=False, load_best_model=False,
-                                         run_serial=run_serial)
-
-        # convert results to data frame
-        df_results = pd.DataFrame(results.items())
-        df_results = pd.pivot_table(df_results, values=1, columns=0)
-
-        if df_all_results.shape[0] == 0:
-            df_all_results = df_results
-        else:
-            df_all_results = pd.concat((df_all_results, df_results))
-
-        count += 1
-
-    print(f"Current run / total run = {count}/{num_of_tests}")
+    if df_all_results.shape[0] == 0:
+        df_all_results = df_results
+    else:
+        df_all_results = pd.concat((df_all_results, df_results))
 
     # save all testing results
     df_all_results.to_csv(result_file_name, index=False)
     print(f"Results are saved in {result_file_name}")
-
-    # append statistics to config file
-    with open(config_file_name, 'a') as file:
-        file.writelines('Testing results statistics:\n')
-        file.writelines(f"Number of Tests: {count}\n")
-        file.writelines("\n")
-        file.write(df_all_results.describe().to_string())

@@ -5,7 +5,7 @@ import os
 
 from recbole.config import Config
 from recbole.utils import set_color
-from mcreckit.utils import get_model
+from mcreckit.utils import get_model, general_arguments, training_arguments, evaluation_arguments, dataset_arguments
 
 
 class MCConfig(Config):
@@ -19,6 +19,13 @@ class MCConfig(Config):
         # David Wang: add config from general model file
         if 'GENERAL_MODEL' in self.variable_config_dict:
             self._general_model_config_dict(self.variable_config_dict['GENERAL_MODEL'])
+
+    def _init_parameters_category(self):
+        self.parameters = dict()
+        self.parameters['General'] = general_arguments
+        self.parameters['Training'] = training_arguments
+        self.parameters['Evaluation'] = evaluation_arguments
+        self.parameters['Dataset'] = dataset_arguments
 
     def _get_model_and_dataset(self, model, dataset):
         """Retrieve model, model class and final data set
