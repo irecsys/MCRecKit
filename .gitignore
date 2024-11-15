@@ -10,9 +10,9 @@
 *config.txt
 events.out.*
 saved/*
-!saved/
+!saved/EMPTY
 log_tensorboard/*
-!log_tensorboard/
+!log_tensorboard/EMPTY
 doc/
 **/__pycache__/
 .idea/
