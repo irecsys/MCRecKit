@@ -10,7 +10,7 @@
 *config.txt
 events.out.*
 saved/
-log_tensorboard/
+log_tensorboard/*
 doc/
 **/__pycache__/
 .idea/
