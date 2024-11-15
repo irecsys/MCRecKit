@@ -9,8 +9,10 @@
 *.csv
 *config.txt
 events.out.*
-saved/
+saved/*
+!saved/
 log_tensorboard/*
+!log_tensorboard/
 doc/
 **/__pycache__/
 .idea/
