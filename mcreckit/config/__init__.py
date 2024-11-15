@@ -1,0 +1,1 @@
+from mcreckit.config.configurator import MCConfig
