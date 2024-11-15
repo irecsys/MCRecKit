@@ -1,0 +1,1 @@
+from mcreckit.sampler.sampler import MCSampler
