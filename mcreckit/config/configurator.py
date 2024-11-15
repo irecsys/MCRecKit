@@ -5,7 +5,8 @@ import os
 
 from recbole.config import Config
 from recbole.utils import set_color
-from mcreckit.utils import get_model, general_arguments, training_arguments, evaluation_arguments, dataset_arguments
+from mcreckit.utils import (get_model, general_arguments, training_arguments,
+                            evaluation_arguments, dataset_arguments, mcranking_arguments)
 
 
 class MCConfig(Config):
@@ -26,6 +27,7 @@ class MCConfig(Config):
         self.parameters['Training'] = training_arguments
         self.parameters['Evaluation'] = evaluation_arguments
         self.parameters['Dataset'] = dataset_arguments
+        self.parameters['Multi-Criteria Ranking'] = mcranking_arguments
 
     def _get_model_and_dataset(self, model, dataset):
         """Retrieve model, model class and final data set
