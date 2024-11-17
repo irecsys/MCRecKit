@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mcreckit package &mdash; MCRecKit 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mcreckit.config package" href="mcreckit.config.html" />
+    <link rel="prev" title="check_torch module" href="check_torch.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MCRecKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MCRecKit</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="check_gpu.html">check_gpu module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="check_torch.html">check_torch module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mcreckit package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.config.html">mcreckit.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.html">mcreckit.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html">mcreckit.model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.sampler.html">mcreckit.sampler package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html">mcreckit.trainer package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html">mcreckit.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-mcreckit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="run_config.html">run_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MCRecKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">MCRecKit</a></li>
+      <li class="breadcrumb-item active">mcreckit package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/mcreckit/mcreckit.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mcreckit-package">
+<h1>mcreckit package<a class="headerlink" href="#mcreckit-package" title="Permalink to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mcreckit.config.html">mcreckit.config package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.config.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.config.html#module-mcreckit.config.configurator">mcreckit.config.configurator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.config.html#mcreckit.config.configurator.MCConfig"><code class="docutils literal notranslate"><span class="pre">MCConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.config.html#module-mcreckit.config">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mcreckit.data.html">mcreckit.data package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.data.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.data.dataloader.html">mcreckit.data.dataloader package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.dataloader.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.dataloader.html#module-mcreckit.data.dataloader.general_dataloader">mcreckit.data.dataloader.general_dataloader module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.dataloader.html#module-mcreckit.data.dataloader">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.data.dataset.html">mcreckit.data.dataset package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.dataset.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.dataset.html#module-mcreckit.data.dataset.mcdataset">mcreckit.data.dataset.mcdataset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.dataset.html#module-mcreckit.data.dataset.multi_criteria_dataset">mcreckit.data.dataset.multi_criteria_dataset module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.dataset.html#module-mcreckit.data.dataset">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.data.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.data.html#module-mcreckit.data.utils">mcreckit.data.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.data.html#mcreckit.data.utils.create_dataset"><code class="docutils literal notranslate"><span class="pre">create_dataset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.data.html#mcreckit.data.utils.create_samplers"><code class="docutils literal notranslate"><span class="pre">create_samplers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.data.html#mcreckit.data.utils.data_preparation"><code class="docutils literal notranslate"><span class="pre">data_preparation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.data.html#mcreckit.data.utils.get_dataloader"><code class="docutils literal notranslate"><span class="pre">get_dataloader()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.data.html#module-mcreckit.data">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mcreckit.model.html">mcreckit.model package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html">mcreckit.model.multi_criteria_recommender package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.combrp">mcreckit.model.multi_criteria_recommender.combrp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.criteriarp">mcreckit.model.multi_criteria_recommender.criteriarp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.criteriasort">mcreckit.model.multi_criteria_recommender.criteriasort module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.hybridrp">mcreckit.model.multi_criteria_recommender.hybridrp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.jointrp">mcreckit.model.multi_criteria_recommender.jointrp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.moneumf">mcreckit.model.multi_criteria_recommender.moneumf module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.overallrp">mcreckit.model.multi_criteria_recommender.overallrp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.html#module-mcreckit.model.abstract_recommender">mcreckit.model.abstract_recommender module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.AbstractRecommender"><code class="docutils literal notranslate"><span class="pre">AbstractRecommender</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.AbstractRecommender.calculate_loss"><code class="docutils literal notranslate"><span class="pre">AbstractRecommender.calculate_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.AbstractRecommender.full_sort_predict"><code class="docutils literal notranslate"><span class="pre">AbstractRecommender.full_sort_predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.AbstractRecommender.load_other_parameter"><code class="docutils literal notranslate"><span class="pre">AbstractRecommender.load_other_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.AbstractRecommender.other_parameter"><code class="docutils literal notranslate"><span class="pre">AbstractRecommender.other_parameter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.AbstractRecommender.predict"><code class="docutils literal notranslate"><span class="pre">AbstractRecommender.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.AbstractRecommender.setHistory"><code class="docutils literal notranslate"><span class="pre">AbstractRecommender.setHistory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.AbstractRecommender.training"><code class="docutils literal notranslate"><span class="pre">AbstractRecommender.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.GeneralRecommender"><code class="docutils literal notranslate"><span class="pre">GeneralRecommender</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.GeneralRecommender.training"><code class="docutils literal notranslate"><span class="pre">GeneralRecommender.training</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.GeneralRecommender.type"><code class="docutils literal notranslate"><span class="pre">GeneralRecommender.type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.MultiCriteriaRecommender"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaRecommender</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.clamp"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaRecommender.clamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.input_type"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaRecommender.input_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.min_max_scale"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaRecommender.min_max_scale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.setHistory"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaRecommender.setHistory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.training"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaRecommender.training</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.type"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaRecommender.type</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.html#module-mcreckit.model.pareto_sort">mcreckit.model.pareto_sort module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.AverageRanking"><code class="docutils literal notranslate"><span class="pre">AverageRanking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.AverageRanking.sort"><code class="docutils literal notranslate"><span class="pre">AverageRanking.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.CrowdingDistanceRanking"><code class="docutils literal notranslate"><span class="pre">CrowdingDistanceRanking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.CrowdingDistanceRanking.sort"><code class="docutils literal notranslate"><span class="pre">CrowdingDistanceRanking.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.DistanceBestSolution"><code class="docutils literal notranslate"><span class="pre">DistanceBestSolution</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.DistanceBestSolution.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">DistanceBestSolution.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.DistanceBestSolution.sort_cuda_kernel"><code class="docutils literal notranslate"><span class="pre">DistanceBestSolution.sort_cuda_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.DistanceBestSolution.sort_gpu"><code class="docutils literal notranslate"><span class="pre">DistanceBestSolution.sort_gpu()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.EpsilonDominance"><code class="docutils literal notranslate"><span class="pre">EpsilonDominance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.EpsilonDominance.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">EpsilonDominance.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.EpsilonDominance.sort_cuda_kernel"><code class="docutils literal notranslate"><span class="pre">EpsilonDominance.sort_cuda_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.EpsilonDominance.sort_gpu"><code class="docutils literal notranslate"><span class="pre">EpsilonDominance.sort_gpu()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FastNonDominatedSort"><code class="docutils literal notranslate"><span class="pre">FastNonDominatedSort</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FastNonDominatedSort.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">FastNonDominatedSort.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FastNonDominatedSort.non_dominated_sort_cuda_kernel"><code class="docutils literal notranslate"><span class="pre">FastNonDominatedSort.non_dominated_sort_cuda_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FastNonDominatedSort.non_dominated_sort_gpu"><code class="docutils literal notranslate"><span class="pre">FastNonDominatedSort.non_dominated_sort_gpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FastNonDominatedSort.sort"><code class="docutils literal notranslate"><span class="pre">FastNonDominatedSort.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationGraph"><code class="docutils literal notranslate"><span class="pre">FavourRelationGraph</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationGraph.build_edges"><code class="docutils literal notranslate"><span class="pre">FavourRelationGraph.build_edges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationGraph.calculate_criteria_rank"><code class="docutils literal notranslate"><span class="pre">FavourRelationGraph.calculate_criteria_rank()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationGraph.dfs"><code class="docutils literal notranslate"><span class="pre">FavourRelationGraph.dfs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationGraph.get_fr_ranks"><code class="docutils literal notranslate"><span class="pre">FavourRelationGraph.get_fr_ranks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationGraph.partition_graph"><code class="docutils literal notranslate"><span class="pre">FavourRelationGraph.partition_graph()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationGraph.perform_level_sorting"><code class="docutils literal notranslate"><span class="pre">FavourRelationGraph.perform_level_sorting()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationRanking"><code class="docutils literal notranslate"><span class="pre">FavourRelationRanking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationRanking.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">FavourRelationRanking.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.FavourRelationRanking.sort"><code class="docutils literal notranslate"><span class="pre">FavourRelationRanking.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.GlobalDetriment"><code class="docutils literal notranslate"><span class="pre">GlobalDetriment</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.GlobalDetriment.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">GlobalDetriment.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.GlobalDetriment.sort_cuda_kernel"><code class="docutils literal notranslate"><span class="pre">GlobalDetriment.sort_cuda_kernel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.KDominance"><code class="docutils literal notranslate"><span class="pre">KDominance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.KDominance.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">KDominance.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.KDominance.sort_cuda_kernel"><code class="docutils literal notranslate"><span class="pre">KDominance.sort_cuda_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.KDominance.sort_gpu"><code class="docutils literal notranslate"><span class="pre">KDominance.sort_gpu()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.LayeringRanking"><code class="docutils literal notranslate"><span class="pre">LayeringRanking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.LayeringRanking.calculate_fitness_values"><code class="docutils literal notranslate"><span class="pre">LayeringRanking.calculate_fitness_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.LayeringRanking.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">LayeringRanking.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.LayeringRanking.sort"><code class="docutils literal notranslate"><span class="pre">LayeringRanking.sort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.LayeringRanking.sort_gpu"><code class="docutils literal notranslate"><span class="pre">LayeringRanking.sort_gpu()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MaximumRanking"><code class="docutils literal notranslate"><span class="pre">MaximumRanking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MaximumRanking.sort"><code class="docutils literal notranslate"><span class="pre">MaximumRanking.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.get_sorting_label_index"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.get_sorting_label_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.greater_equal"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.greater_equal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.less_equal"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.less_equal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.lp_norm"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.lp_norm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.min_max_scale"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.min_max_scale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.pbi_norm"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.pbi_norm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.setHistoryItems"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.setHistoryItems()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.sort"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.sort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.sort_cuda_kernel"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.sort_cuda_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.sort_gpu"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.sort_gpu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.sort_parallel"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.sort_parallel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.MultiCriteriaSort.tchebycheff_norm"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaSort.tchebycheff_norm()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.OverallRatingRanking"><code class="docutils literal notranslate"><span class="pre">OverallRatingRanking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.OverallRatingRanking.sort"><code class="docutils literal notranslate"><span class="pre">OverallRatingRanking.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.PreferenceOrderRanking"><code class="docutils literal notranslate"><span class="pre">PreferenceOrderRanking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.PreferenceOrderRanking.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">PreferenceOrderRanking.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.PreferenceOrderRanking.is_efficient"><code class="docutils literal notranslate"><span class="pre">PreferenceOrderRanking.is_efficient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.PreferenceOrderRanking.sort"><code class="docutils literal notranslate"><span class="pre">PreferenceOrderRanking.sort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.PreferenceOrderRanking.sort_cuda_kernel"><code class="docutils literal notranslate"><span class="pre">PreferenceOrderRanking.sort_cuda_kernel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.PreferenceOrderRanking.sort_gpu"><code class="docutils literal notranslate"><span class="pre">PreferenceOrderRanking.sort_gpu()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.ProfitGain"><code class="docutils literal notranslate"><span class="pre">ProfitGain</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.ProfitGain.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">ProfitGain.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.ProfitGain.sort_cuda_kernel"><code class="docutils literal notranslate"><span class="pre">ProfitGain.sort_cuda_kernel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.WeightedSumRanking"><code class="docutils literal notranslate"><span class="pre">WeightedSumRanking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.WeightedSumRanking.cpu_sort_algorithm"><code class="docutils literal notranslate"><span class="pre">WeightedSumRanking.cpu_sort_algorithm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.WeightedSumRanking.sort"><code class="docutils literal notranslate"><span class="pre">WeightedSumRanking.sort()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.html#mcreckit.model.pareto_sort.greater_equal"><code class="docutils literal notranslate"><span class="pre">greater_equal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.html#module-mcreckit.model">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mcreckit.sampler.html">mcreckit.sampler package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.sampler.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.sampler.html#module-mcreckit.sampler.sampler">mcreckit.sampler.sampler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.sampler.html#mcreckit.sampler.sampler.MCSampler"><code class="docutils literal notranslate"><span class="pre">MCSampler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.sampler.html#mcreckit.sampler.sampler.MCSampler.get_used_ids"><code class="docutils literal notranslate"><span class="pre">MCSampler.get_used_ids()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.sampler.html#module-mcreckit.sampler">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mcreckit.trainer.html">mcreckit.trainer package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.trainer.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.trainer.html#module-mcreckit.trainer.trainer">mcreckit.trainer.trainer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CombRPTrainer"><code class="docutils literal notranslate"><span class="pre">CombRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CombRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">CombRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CombRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">CombRPTrainer.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaNNCFTrainer"><code class="docutils literal notranslate"><span class="pre">CriteriaNNCFTrainer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaRPTrainer"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaRPTrainer.parallel_fit"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.parallel_fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaRPTrainer.process_fit"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.process_fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaRPTrainer.serial_fit"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.serial_fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaSortTrainer"><code class="docutils literal notranslate"><span class="pre">CriteriaSortTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaSortTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">CriteriaSortTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.CriteriaSortTrainer.fit"><code class="docutils literal notranslate"><span class="pre">CriteriaSortTrainer.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.DeepCriteriaChainTrainer"><code class="docutils literal notranslate"><span class="pre">DeepCriteriaChainTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.DeepCriteriaChainTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">DeepCriteriaChainTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.DeepCriteriaChainTrainer.fit"><code class="docutils literal notranslate"><span class="pre">DeepCriteriaChainTrainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.DeepCriteriaChainTrainer.update_data_set"><code class="docutils literal notranslate"><span class="pre">DeepCriteriaChainTrainer.update_data_set()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.HybridRPTrainer"><code class="docutils literal notranslate"><span class="pre">HybridRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.HybridRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">HybridRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.HybridRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">HybridRPTrainer.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.JointRPTrainer"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.JointRPTrainer.criteria_evaluate"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer.criteria_evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.JointRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.JointRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.JointRPTrainer.print_criteria_results"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer.print_criteria_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.MultiCriteriaTrainer.construct_criteria_tensor"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaTrainer.construct_criteria_tensor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.MultiCriteriaTrainer.construct_saved_model_file"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaTrainer.construct_saved_model_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.OverallRPTrainer"><code class="docutils literal notranslate"><span class="pre">OverallRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.OverallRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">OverallRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.OverallRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">OverallRPTrainer.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.Trainer"><code class="docutils literal notranslate"><span class="pre">Trainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.Trainer.evaluate"><code class="docutils literal notranslate"><span class="pre">Trainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.Trainer.fit"><code class="docutils literal notranslate"><span class="pre">Trainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.trainer.Trainer.resume_checkpoint"><code class="docutils literal notranslate"><span class="pre">Trainer.resume_checkpoint()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.trainer.html#module-mcreckit.trainer">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CombRPTrainer"><code class="docutils literal notranslate"><span class="pre">CombRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CombRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">CombRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CombRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">CombRPTrainer.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CriteriaRPTrainer"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CriteriaRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CriteriaRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CriteriaRPTrainer.parallel_fit"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.parallel_fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CriteriaRPTrainer.process_fit"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.process_fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.CriteriaRPTrainer.serial_fit"><code class="docutils literal notranslate"><span class="pre">CriteriaRPTrainer.serial_fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.HybridRPTrainer"><code class="docutils literal notranslate"><span class="pre">HybridRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.HybridRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">HybridRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.HybridRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">HybridRPTrainer.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.JointRPTrainer"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.JointRPTrainer.criteria_evaluate"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer.criteria_evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.JointRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.JointRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.JointRPTrainer.print_criteria_results"><code class="docutils literal notranslate"><span class="pre">JointRPTrainer.print_criteria_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.MultiCriteriaTrainer"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.MultiCriteriaTrainer.construct_criteria_tensor"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaTrainer.construct_criteria_tensor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.MultiCriteriaTrainer.construct_saved_model_file"><code class="docutils literal notranslate"><span class="pre">MultiCriteriaTrainer.construct_saved_model_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.OverallRPTrainer"><code class="docutils literal notranslate"><span class="pre">OverallRPTrainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.OverallRPTrainer.evaluate"><code class="docutils literal notranslate"><span class="pre">OverallRPTrainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.OverallRPTrainer.fit"><code class="docutils literal notranslate"><span class="pre">OverallRPTrainer.fit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.Trainer"><code class="docutils literal notranslate"><span class="pre">Trainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.Trainer.evaluate"><code class="docutils literal notranslate"><span class="pre">Trainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.Trainer.fit"><code class="docutils literal notranslate"><span class="pre">Trainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html#mcreckit.trainer.Trainer.resume_checkpoint"><code class="docutils literal notranslate"><span class="pre">Trainer.resume_checkpoint()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mcreckit.utils.html">mcreckit.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.utils.html#module-mcreckit.utils.argument_list">mcreckit.utils.argument_list module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.utils.html#module-mcreckit.utils.enum_type">mcreckit.utils.enum_type module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.CustomColumn"><code class="docutils literal notranslate"><span class="pre">CustomColumn</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.CustomColumn.CRITERIA_VECTOR"><code class="docutils literal notranslate"><span class="pre">CustomColumn.CRITERIA_VECTOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.CustomColumn.PREDICTED_LABEL"><code class="docutils literal notranslate"><span class="pre">CustomColumn.PREDICTED_LABEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.CustomColumn.RANKING_SCORE"><code class="docutils literal notranslate"><span class="pre">CustomColumn.RANKING_SCORE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.CustomConstant"><code class="docutils literal notranslate"><span class="pre">CustomConstant</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.CustomConstant.CHAIN_MODELS"><code class="docutils literal notranslate"><span class="pre">CustomConstant.CHAIN_MODELS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.MCModelType"><code class="docutils literal notranslate"><span class="pre">MCModelType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.MCModelType.CONTEXT"><code class="docutils literal notranslate"><span class="pre">MCModelType.CONTEXT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.MCModelType.DECISIONTREE"><code class="docutils literal notranslate"><span class="pre">MCModelType.DECISIONTREE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.MCModelType.GENERAL"><code class="docutils literal notranslate"><span class="pre">MCModelType.GENERAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.MCModelType.KNOWLEDGE"><code class="docutils literal notranslate"><span class="pre">MCModelType.KNOWLEDGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.MCModelType.MULTICRITERIA"><code class="docutils literal notranslate"><span class="pre">MCModelType.MULTICRITERIA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.MCModelType.SEQUENTIAL"><code class="docutils literal notranslate"><span class="pre">MCModelType.SEQUENTIAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.enum_type.MCModelType.TRADITIONAL"><code class="docutils literal notranslate"><span class="pre">MCModelType.TRADITIONAL</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.utils.html#module-mcreckit.utils.logger">mcreckit.utils.logger module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.logger.init_logger"><code class="docutils literal notranslate"><span class="pre">init_logger()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.utils.html#module-mcreckit.utils.utils">mcreckit.utils.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.utils.get_model"><code class="docutils literal notranslate"><span class="pre">get_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.utils.get_trainer"><code class="docutils literal notranslate"><span class="pre">get_trainer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.utils.read_yaml"><code class="docutils literal notranslate"><span class="pre">read_yaml()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.utils.set_information_gain_order"><code class="docutils literal notranslate"><span class="pre">set_information_gain_order()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.utils.html#module-mcreckit.utils.workflow_tools">mcreckit.utils.workflow_tools module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.workflow_tools.calculate_average_metrics"><code class="docutils literal notranslate"><span class="pre">calculate_average_metrics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.workflow_tools.calculate_f1_score"><code class="docutils literal notranslate"><span class="pre">calculate_f1_score()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.workflow_tools.process_run"><code class="docutils literal notranslate"><span class="pre">process_run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.workflow_tools.run_model_training"><code class="docutils literal notranslate"><span class="pre">run_model_training()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.workflow_tools.run_model_training_parallel"><code class="docutils literal notranslate"><span class="pre">run_model_training_parallel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.workflow_tools.run_model_training_serial"><code class="docutils literal notranslate"><span class="pre">run_model_training_serial()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.workflow_tools.update_best_log"><code class="docutils literal notranslate"><span class="pre">update_best_log()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.utils.html#module-mcreckit.utils">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.CustomColumn"><code class="docutils literal notranslate"><span class="pre">CustomColumn</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.CustomColumn.CRITERIA_VECTOR"><code class="docutils literal notranslate"><span class="pre">CustomColumn.CRITERIA_VECTOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.CustomColumn.PREDICTED_LABEL"><code class="docutils literal notranslate"><span class="pre">CustomColumn.PREDICTED_LABEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.CustomColumn.RANKING_SCORE"><code class="docutils literal notranslate"><span class="pre">CustomColumn.RANKING_SCORE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.CustomConstant"><code class="docutils literal notranslate"><span class="pre">CustomConstant</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.CustomConstant.CHAIN_MODELS"><code class="docutils literal notranslate"><span class="pre">CustomConstant.CHAIN_MODELS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.MCModelType"><code class="docutils literal notranslate"><span class="pre">MCModelType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.MCModelType.CONTEXT"><code class="docutils literal notranslate"><span class="pre">MCModelType.CONTEXT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.MCModelType.DECISIONTREE"><code class="docutils literal notranslate"><span class="pre">MCModelType.DECISIONTREE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.MCModelType.GENERAL"><code class="docutils literal notranslate"><span class="pre">MCModelType.GENERAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.MCModelType.KNOWLEDGE"><code class="docutils literal notranslate"><span class="pre">MCModelType.KNOWLEDGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.MCModelType.MULTICRITERIA"><code class="docutils literal notranslate"><span class="pre">MCModelType.MULTICRITERIA</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.MCModelType.SEQUENTIAL"><code class="docutils literal notranslate"><span class="pre">MCModelType.SEQUENTIAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.MCModelType.TRADITIONAL"><code class="docutils literal notranslate"><span class="pre">MCModelType.TRADITIONAL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.get_model"><code class="docutils literal notranslate"><span class="pre">get_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.get_trainer"><code class="docutils literal notranslate"><span class="pre">get_trainer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.init_seed"><code class="docutils literal notranslate"><span class="pre">init_seed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.utils.html#mcreckit.utils.set_information_gain_order"><code class="docutils literal notranslate"><span class="pre">set_information_gain_order()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-mcreckit">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mcreckit" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="check_torch.html" class="btn btn-neutral float-left" title="check_torch module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mcreckit.config.html" class="btn btn-neutral float-right" title="mcreckit.config package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yong Zheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

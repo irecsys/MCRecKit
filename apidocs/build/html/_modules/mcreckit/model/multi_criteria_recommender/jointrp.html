@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mcreckit.model.multi_criteria_recommender.jointrp &mdash; MCRecKit 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            MCRecKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcreckit/modules.html">MCRecKit</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">MCRecKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mcreckit.model.multi_criteria_recommender.jointrp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mcreckit.model.multi_criteria_recommender.jointrp</h1><div class="highlight"><pre>
+<span></span><span class="c1"># @Time   : 2021/12/27</span>
+<span class="c1"># @Author : David Wang</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">mcreckit.model.abstract_recommender</span> <span class="kn">import</span> <span class="n">MultiCriteriaRecommender</span>
+
+
+<div class="viewcode-block" id="JointRP"><a class="viewcode-back" href="../../../../mcreckit/mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.jointrp.JointRP">[docs]</a><span class="k">class</span> <span class="nc">JointRP</span><span class="p">(</span><span class="n">MultiCriteriaRecommender</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        JointRP = Joint Rating Prediction</span>
+<span class="sd">        This model defines the process of joint optimization</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">JointRP</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+
+<div class="viewcode-block" id="JointRP.calculate_loss"><a class="viewcode-back" href="../../../../mcreckit/mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.jointrp.JointRP.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interaction</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">interaction</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">USER_ID</span><span class="p">]</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">interaction</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ITEM_ID</span><span class="p">]</span>
+
+        <span class="c1"># get predicted rating for each user and item</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+        <span class="c1"># add loss for each criteria rating</span>
+        <span class="n">joint_loss</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">criteria_label</span><span class="p">):</span>
+            <span class="n">joint_loss</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">outputs</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">interaction</span><span class="p">[</span><span class="n">label</span><span class="p">])</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">criteria_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="c1"># normalize by total weight</span>
+        <span class="n">joint_loss</span> <span class="o">=</span> <span class="n">joint_loss</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">criteria_weights</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">joint_loss</span></div>
+
+<div class="viewcode-block" id="JointRP.predict"><a class="viewcode-back" href="../../../../mcreckit/mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.jointrp.JointRP.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interaction</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">interaction</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">USER_ID</span><span class="p">]</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">interaction</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ITEM_ID</span><span class="p">]</span>
+
+        <span class="n">predicted_rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+        <span class="c1"># clamp prediction if evaluation is based on label value</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_mode</span> <span class="o">==</span> <span class="s1">&#39;labeled&#39;</span><span class="p">:</span>
+            <span class="n">predicted_rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="n">predicted_rating</span><span class="p">)</span>
+
+        <span class="c1"># apply soring algorithm</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sorting_weight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="c1"># check if overall rating is in the criteria labels</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># get index if overall rating.</span>
+                <span class="c1"># This is needed since overall rating may be at any position in the config file</span>
+                <span class="n">overall_label_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">criteria_label</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">LABEL</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">LABEL</span><span class="si">}</span><span class="s2">&#39; not in &#39;MULTI_LABEL_FIELD&#39; setting: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">criteria_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># get predicted overall rating</span>
+            <span class="n">predicted_overall_rating</span> <span class="o">=</span> <span class="n">predicted_rating</span><span class="p">[:,</span> <span class="n">overall_label_idx</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># get predicted criteria rating</span>
+            <span class="n">predicted_criteria_rating</span> <span class="o">=</span> <span class="n">predicted_rating</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">criteria_label</span><span class="p">))</span>
+                                                             <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">overall_label_idx</span><span class="p">]]</span>
+
+            <span class="c1"># calculate sorting score</span>
+            <span class="n">sort_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sorting_algorithm</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">interaction</span><span class="p">,</span> <span class="n">predicted_criteria_rating</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;start Pareto ranking...&#39;</span><span class="p">)</span>
+            <span class="c1"># map sort score to value in [min, max] rating</span>
+            <span class="n">sort_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_max_scale</span><span class="p">(</span><span class="n">sort_score</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+            <span class="c1"># calculate weighted sum</span>
+            <span class="n">predicted_overall_rating</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sorting_weight</span> <span class="o">*</span> <span class="n">sort_score</span> \
+                                       <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sorting_weight</span><span class="p">)</span> <span class="o">*</span> <span class="n">predicted_overall_rating</span>
+
+            <span class="c1"># combine weighted overall rating and criteria rating together</span>
+            <span class="k">if</span> <span class="n">overall_label_idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">predicted_rating</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">predicted_overall_rating</span><span class="p">,</span> <span class="n">predicted_criteria_rating</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">overall_label_idx</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">criteria_label</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">predicted_rating</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">predicted_criteria_rating</span><span class="p">,</span> <span class="n">predicted_overall_rating</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">predicted_rating</span> <span class="o">=</span> \
+                    <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">predicted_criteria_rating</span><span class="p">[:,</span> <span class="nb">range</span><span class="p">(</span><span class="n">overall_label_idx</span><span class="p">)],</span>
+                               <span class="n">predicted_overall_rating</span><span class="p">,</span>
+                               <span class="n">predicted_criteria_rating</span><span class="p">[:,</span>
+                               <span class="nb">range</span><span class="p">(</span><span class="n">overall_label_idx</span><span class="p">,</span> <span class="n">predicted_criteria_rating</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+                               <span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">predicted_rating</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yong Zheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

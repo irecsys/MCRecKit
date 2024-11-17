@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mcreckit.model.multi_criteria_recommender.moneumf &mdash; MCRecKit 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            MCRecKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mcreckit/modules.html">MCRecKit</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">MCRecKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mcreckit.model.multi_criteria_recommender.moneumf</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mcreckit.model.multi_criteria_recommender.moneumf</h1><div class="highlight"><pre>
+<span></span><span class="c1"># @Time   : 2021/12/27</span>
+<span class="c1"># @Author : Yong Zheng and David Wang</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">recbole.model.layers</span> <span class="kn">import</span> <span class="n">MLPLayers</span>
+<span class="kn">from</span> <span class="nn">mcreckit.model.multi_criteria_recommender.jointrp</span> <span class="kn">import</span> <span class="n">JointRP</span>
+
+
+<div class="viewcode-block" id="MONeuMF"><a class="viewcode-back" href="../../../../mcreckit/mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.moneumf.MONeuMF">[docs]</a><span class="k">class</span> <span class="nc">MONeuMF</span><span class="p">(</span><span class="n">JointRP</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        MONeuMF = Multi-Output NeuMF Model</span>
+<span class="sd">        This model can predict multi-criteria ratings by using a process of joint optimization.</span>
+<span class="sd">        Reference:</span>
+<span class="sd">            N. Nassar, A. Jafar, and Y. Rahhal, &quot;Multi-criteria collaborative filtering</span>
+<span class="sd">            recommender by fusing deep neural network and matrix factorization&quot;,</span>
+<span class="sd">            J. Big Data, vol. 7, no. 1, pp. 1–12, Dec. 2020.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MONeuMF</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+
+        <span class="c1"># load parameters info</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mf_embedding_size</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;mf_embedding_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp_embedding_size</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;mlp_embedding_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;mlp_hidden_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout_prob</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;dropout_prob&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mf_train</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;mf_train&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp_train</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;mlp_train&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_pretrain</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;use_pretrain&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mf_pretrain_path</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;mf_pretrain_path&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp_pretrain_path</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;mlp_pretrain_path&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">criteria_weights</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;criteria_weights&#39;</span><span class="p">]</span>
+
+        <span class="c1"># check criteria weights to match number of rating inputs</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">criteria_weights</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MULTI_LABEL_FIELD&#39;</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;criteria_weights&#39; and &#39;MULTI_LABEL_FIELD&#39; must have same number element: </span><span class="se">\n</span><span class="s2">&quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot;criteria_weights: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">criteria_weights</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot;MULTI_LABEL_FIELD: </span><span class="si">{</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;MULTI_LABEL_FIELD&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># define layers and loss</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_mf_embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_users</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_embedding_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_mf_embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_embedding_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_mlp_embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_users</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_embedding_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_mlp_embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_embedding_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp_layers</span> <span class="o">=</span> <span class="n">MLPLayers</span><span class="p">([</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_embedding_size</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout_prob</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp_layers</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># remove logger to use torch.save()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_train</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_train</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">predict_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mf_embedding_size</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_size</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_criteria</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_train</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">predict_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mf_embedding_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_criteria</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_train</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">predict_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_size</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_criteria</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+        <span class="c1"># parameters initialization</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_pretrain</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_pretrain</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_init_weights</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MONeuMF.forward"><a class="viewcode-back" href="../../../../mcreckit/mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.moneumf.MONeuMF.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate network output for a given user and item</span>
+<span class="sd">        Args:</span>
+<span class="sd">            user: tensor of user index</span>
+<span class="sd">            item: tensor of item index</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            list of output of each network of criteria rating</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">user_mf_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_mf_embedding</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">item_mf_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_mf_embedding</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">user_mlp_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_mlp_embedding</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">item_mlp_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_mlp_embedding</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_train</span><span class="p">:</span>
+            <span class="n">mf_output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">user_mf_e</span><span class="p">,</span> <span class="n">item_mf_e</span><span class="p">)</span>  <span class="c1"># [batch_size, embedding_size]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_train</span><span class="p">:</span>
+            <span class="n">mlp_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_layers</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">user_mlp_e</span><span class="p">,</span> <span class="n">item_mlp_e</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># [batch_size, layers[-1]]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_train</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_train</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_layer</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">mf_output</span><span class="p">,</span> <span class="n">mlp_output</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mf_train</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_layer</span><span class="p">(</span><span class="n">mf_output</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_train</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_layer</span><span class="p">(</span><span class="n">mlp_output</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;mf_train and mlp_train can not be False at the same time&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_criteria</span><span class="p">):</span>
+            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yong Zheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

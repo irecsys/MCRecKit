@@ -1,0 +1,1156 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mcreckit.model package &mdash; MCRecKit 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mcreckit.model.multi_criteria_recommender package" href="mcreckit.model.multi_criteria_recommender.html" />
+    <link rel="prev" title="mcreckit.data.dataset package" href="mcreckit.data.dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MCRecKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MCRecKit</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="check_gpu.html">check_gpu module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="check_torch.html">check_torch module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="mcreckit.html">mcreckit package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="mcreckit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.config.html">mcreckit.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.html">mcreckit.data package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">mcreckit.model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.sampler.html">mcreckit.sampler package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.trainer.html">mcreckit.trainer package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html">mcreckit.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.html#module-mcreckit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="run_config.html">run_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MCRecKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">MCRecKit</a></li>
+          <li class="breadcrumb-item"><a href="mcreckit.html">mcreckit package</a></li>
+      <li class="breadcrumb-item active">mcreckit.model package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/mcreckit/mcreckit.model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mcreckit-model-package">
+<h1>mcreckit.model package<a class="headerlink" href="#mcreckit-model-package" title="Permalink to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html">mcreckit.model.multi_criteria_recommender package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.combrp">mcreckit.model.multi_criteria_recommender.combrp module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.combrp.CombRP"><code class="docutils literal notranslate"><span class="pre">CombRP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.combrp.CombRP.predict"><code class="docutils literal notranslate"><span class="pre">CombRP.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.combrp.CombRP.training"><code class="docutils literal notranslate"><span class="pre">CombRP.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.criteriarp">mcreckit.model.multi_criteria_recommender.criteriarp module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.criteriarp.CriteriaRP"><code class="docutils literal notranslate"><span class="pre">CriteriaRP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.criteriarp.CriteriaRP.predict"><code class="docutils literal notranslate"><span class="pre">CriteriaRP.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.criteriarp.CriteriaRP.training"><code class="docutils literal notranslate"><span class="pre">CriteriaRP.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.criteriasort">mcreckit.model.multi_criteria_recommender.criteriasort module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.criteriasort.CriteriaSort"><code class="docutils literal notranslate"><span class="pre">CriteriaSort</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.criteriasort.CriteriaSort.predict"><code class="docutils literal notranslate"><span class="pre">CriteriaSort.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.criteriasort.CriteriaSort.training"><code class="docutils literal notranslate"><span class="pre">CriteriaSort.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.hybridrp">mcreckit.model.multi_criteria_recommender.hybridrp module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.hybridrp.HybridRP"><code class="docutils literal notranslate"><span class="pre">HybridRP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.hybridrp.HybridRP.predict"><code class="docutils literal notranslate"><span class="pre">HybridRP.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.hybridrp.HybridRP.training"><code class="docutils literal notranslate"><span class="pre">HybridRP.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.jointrp">mcreckit.model.multi_criteria_recommender.jointrp module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.jointrp.JointRP"><code class="docutils literal notranslate"><span class="pre">JointRP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.jointrp.JointRP.calculate_loss"><code class="docutils literal notranslate"><span class="pre">JointRP.calculate_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.jointrp.JointRP.predict"><code class="docutils literal notranslate"><span class="pre">JointRP.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.jointrp.JointRP.training"><code class="docutils literal notranslate"><span class="pre">JointRP.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.moneumf">mcreckit.model.multi_criteria_recommender.moneumf module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.moneumf.MONeuMF"><code class="docutils literal notranslate"><span class="pre">MONeuMF</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.moneumf.MONeuMF.forward"><code class="docutils literal notranslate"><span class="pre">MONeuMF.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.moneumf.MONeuMF.training"><code class="docutils literal notranslate"><span class="pre">MONeuMF.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender.overallrp">mcreckit.model.multi_criteria_recommender.overallrp module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.overallrp.OverallRP"><code class="docutils literal notranslate"><span class="pre">OverallRP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.overallrp.OverallRP.calculate_loss"><code class="docutils literal notranslate"><span class="pre">OverallRP.calculate_loss()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.overallrp.OverallRP.forward"><code class="docutils literal notranslate"><span class="pre">OverallRP.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.overallrp.OverallRP.predict"><code class="docutils literal notranslate"><span class="pre">OverallRP.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#mcreckit.model.multi_criteria_recommender.overallrp.OverallRP.training"><code class="docutils literal notranslate"><span class="pre">OverallRP.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcreckit.model.multi_criteria_recommender.html#module-mcreckit.model.multi_criteria_recommender">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-mcreckit.model.abstract_recommender">
+<span id="mcreckit-model-abstract-recommender-module"></span><h2>mcreckit.model.abstract_recommender module<a class="headerlink" href="#module-mcreckit.model.abstract_recommender" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.AbstractRecommender">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.abstract_recommender.</span></span><span class="sig-name descname"><span class="pre">AbstractRecommender</span></span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#AbstractRecommender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.AbstractRecommender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Base class for all models</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.AbstractRecommender.calculate_loss">
+<span class="sig-name descname"><span class="pre">calculate_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#AbstractRecommender.calculate_loss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.AbstractRecommender.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the training loss for a batch data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interaction</strong> (<em>Interaction</em>) – Interaction class of the batch.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Training loss, shape: []</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.AbstractRecommender.full_sort_predict">
+<span class="sig-name descname"><span class="pre">full_sort_predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#AbstractRecommender.full_sort_predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.AbstractRecommender.full_sort_predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>full sort prediction function.
+Given users, calculate the scores between users and all candidate items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interaction</strong> (<em>Interaction</em>) – Interaction class of the batch.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predicted scores for given users and all candidate items,
+shape: [n_batch_users * n_candidate_items]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.AbstractRecommender.load_other_parameter">
+<span class="sig-name descname"><span class="pre">load_other_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">para</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#AbstractRecommender.load_other_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.AbstractRecommender.load_other_parameter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.AbstractRecommender.other_parameter">
+<span class="sig-name descname"><span class="pre">other_parameter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#AbstractRecommender.other_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.AbstractRecommender.other_parameter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.AbstractRecommender.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#AbstractRecommender.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.AbstractRecommender.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the scores between users and items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interaction</strong> (<em>Interaction</em>) – Interaction class of the batch.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predicted scores for given users and items, shape: [batch_size]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.AbstractRecommender.setHistory">
+<span class="sig-name descname"><span class="pre">setHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">history</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#AbstractRecommender.setHistory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.AbstractRecommender.setHistory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.AbstractRecommender.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#mcreckit.model.abstract_recommender.AbstractRecommender.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.GeneralRecommender">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.abstract_recommender.</span></span><span class="sig-name descname"><span class="pre">GeneralRecommender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#GeneralRecommender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.GeneralRecommender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.abstract_recommender.AbstractRecommender" title="mcreckit.model.abstract_recommender.AbstractRecommender"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractRecommender</span></code></a></p>
+<p>This is a abstract general recommender. All the general model should implement this class.
+The base general recommender class provide the basic dataset and parameters information.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.GeneralRecommender.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#mcreckit.model.abstract_recommender.GeneralRecommender.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.GeneralRecommender.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#mcreckit.model.abstract_recommender.GeneralRecommender.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.MultiCriteriaRecommender">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.abstract_recommender.</span></span><span class="sig-name descname"><span class="pre">MultiCriteriaRecommender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#MultiCriteriaRecommender"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.MultiCriteriaRecommender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.abstract_recommender.GeneralRecommender" title="mcreckit.model.abstract_recommender.GeneralRecommender"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralRecommender</span></code></a></p>
+<p>This is an abstract class of multi criteria recommender</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.MultiCriteriaRecommender.clamp">
+<span class="sig-name descname"><span class="pre">clamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#MultiCriteriaRecommender.clamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.clamp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>clamp the value in ratings tensor into range of self.min_rating_value and self.max_rating_value:</dt><dd><p>if rating &lt; self.min_rating_value, then rating = self.min_rating_value
+if rating &gt; self.max_rating_value, then rating = self.max_rating_value</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tensor</strong> (<em>a</em>) – </p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.MultiCriteriaRecommender.input_type">
+<span class="sig-name descname"><span class="pre">input_type</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.input_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.MultiCriteriaRecommender.min_max_scale">
+<span class="sig-name descname"><span class="pre">min_max_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#MultiCriteriaRecommender.min_max_scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.min_max_scale" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>scale value in score tensor to value in [lower_bound, upper_bound] with min max method:</dt><dd><p>v’ = (v - min(score)) / (max(score) - min(score)) * (upper_bound - lower_bound) + lower_bound</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>score</strong> – a tensor object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a rescaled tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.MultiCriteriaRecommender.setHistory">
+<span class="sig-name descname"><span class="pre">setHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">history</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/abstract_recommender.html#MultiCriteriaRecommender.setHistory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.setHistory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.MultiCriteriaRecommender.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mcreckit.model.abstract_recommender.MultiCriteriaRecommender.type">
+<span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#mcreckit.model.abstract_recommender.MultiCriteriaRecommender.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mcreckit.model.pareto_sort">
+<span id="mcreckit-model-pareto-sort-module"></span><h2>mcreckit.model.pareto_sort module<a class="headerlink" href="#module-mcreckit.model.pareto_sort" title="Permalink to this heading">¶</a></h2>
+<p>Implementing all Pareto sorting algorithms here
+Usage: import recbole.model.pareto_sort</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.AverageRanking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">AverageRanking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#AverageRanking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.AverageRanking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>A ranking method provided by ‘Bentley, P.J., Wakefield, J.P.: Finding Acceptable Solutions in the Pareto-Optimal
+Range using Multiobjective Genetic Algorithms. In: Chawdhry, P.K., Roy, R., Pant, R.K. (eds.) Soft Computing in
+Engineering Design and Manufacturing. Part 5, June 1997, pp. 231–240. Springer, London (1997) ‘</p>
+<p>For each solution, get the ranking score of each criteria and take the average or sum of ranking across all criteria</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.AverageRanking.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#AverageRanking.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.AverageRanking.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating prediction. default to None
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.CrowdingDistanceRanking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">CrowdingDistanceRanking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#CrowdingDistanceRanking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.CrowdingDistanceRanking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Rank the multi criteria solution based on crowding distance implemented in pymoo
+reference: <a class="reference external" href="https://pymoo.org/algorithms/moo/nsga2.html">https://pymoo.org/algorithms/moo/nsga2.html</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.CrowdingDistanceRanking.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#CrowdingDistanceRanking.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.CrowdingDistanceRanking.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating prediction. default to None
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.DistanceBestSolution">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">DistanceBestSolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#DistanceBestSolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.DistanceBestSolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Proposed by ‘Mario Garza-Fabre1, Gregorio Toscano Pulido1, and Carlos A. Coello Coello2,
+Ranking Methods for Many-Objective Optimization,
+A. Hernandez Aguirre et al. (Eds.): MICAI 2009, LNAI 5845, pp. 633–645, 2009. ,
+Springer-Verlag Berlin Heidelberg 2009’
+It uses the distance of this solution to the best solution, which is the max of each objective</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.DistanceBestSolution.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#DistanceBestSolution.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.DistanceBestSolution.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Global Detriment rank for each rating
+:param criteria_ratings: an array of criteria ratings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an array of Global Detriment rank score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.DistanceBestSolution.sort_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sort_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">best_solution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#DistanceBestSolution.sort_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.DistanceBestSolution.sort_cuda_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA kernel function to dominated sort
+:param ratings: two dimension array with ratings for multiple users
+:param num_items: one dimension array with only one element
+:param ranks: output variable for rankings
+:param best_solution: variable for best solution
+:param dominated_scores: used for local sort</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.DistanceBestSolution.sort_gpu">
+<span class="sig-name descname"><span class="pre">sort_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#DistanceBestSolution.sort_gpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.DistanceBestSolution.sort_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform non dominated sort in GPU CUDA platform
+:param ratings: two-dimensional array
+:param num_items: number of items per user id
+:param dominated_scores: used for sub sort with local_sort = True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.EpsilonDominance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">EpsilonDominance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#EpsilonDominance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.EpsilonDominance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Reference:
+M. Laumanns, L. Thiele, K. Deb, E. Zitzler, Combining Convergence and Diversity in Evolutionary Multi-Objective
+Optimization, Evolutionary Computation 10(3), 2002 by MIT
+Main idea: apply (epsilon + 1) f_i &gt;= f_j</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.EpsilonDominance.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#EpsilonDominance.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.EpsilonDominance.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Global Detriment rank for each ratings
+:param criteria_ratings: an array of criteria ratings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an array of ranking score based on epsilon dominance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.EpsilonDominance.sort_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sort_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#EpsilonDominance.sort_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.EpsilonDominance.sort_cuda_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA kernel function to dominated sort
+:param ratings: two dimension array with ratings for multiple users
+:param parameters: one dimension array with parameter values
+:param ranks: output variable for rankings
+:param dominated_scores: the Pareto dominated score, used only for sub sort</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.EpsilonDominance.sort_gpu">
+<span class="sig-name descname"><span class="pre">sort_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#EpsilonDominance.sort_gpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.EpsilonDominance.sort_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform non dominated sort in GPU CUDA platform. If the parameter is different, the subclass must implement
+its own method
+:param ratings: two-dimensional array
+:param num_items: number of items per user id
+:param dominated_scores: the Pareto dominated score, used only for sub sort</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FastNonDominatedSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">FastNonDominatedSort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FastNonDominatedSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FastNonDominatedSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>A fast soring algorithm based on ‘fast non-dominated sorting’ proposed by:</p>
+<dl class="simple">
+<dt>Deb, Kalyanmoy, et al. “A fast elitist non-dominated sorting genetic algorithm for multi-objective optimization:</dt><dd><p>NSGA-II.” Parallel problem solving from nature PPSN VI. Springer Berlin Heidelberg, 2000.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FastNonDominatedSort.cpu_sort_algorithm">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_margin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FastNonDominatedSort.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FastNonDominatedSort.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform non dominated sorting and return the ranking for each rating
+:param criteria_ratings: list of multi criteria rating for each item</p>
+<blockquote>
+<div><dl class="simple">
+<dt>‘sub_sorting’: can be value of</dt><dd><p>None: do not perform sub sorting
+‘average’: take average of criteria rating as ranking score
+‘crowding’: use crowding measurement as ranking score</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>error_margin</strong> – used to compare criteria value</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of rank score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FastNonDominatedSort.non_dominated_sort_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">non_dominated_sort_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FastNonDominatedSort.non_dominated_sort_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FastNonDominatedSort.non_dominated_sort_cuda_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA kernel function to dominated sort
+:param ratings: two dimension array with ratings for multiple users
+:param num_items: one dimension array with only one element
+:param ranks: output variable for rankings</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FastNonDominatedSort.non_dominated_sort_gpu">
+<span class="sig-name descname"><span class="pre">non_dominated_sort_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FastNonDominatedSort.non_dominated_sort_gpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FastNonDominatedSort.non_dominated_sort_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform non dominated sort in GPU CUDA platform
+:param interaction: user item interaction data
+:param criteria_ratings: two-dimensional tensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FastNonDominatedSort.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FastNonDominatedSort.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FastNonDominatedSort.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Customized sort interface
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: overall rating</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationGraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">FavourRelationGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">favor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bigger'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationGraph.build_edges">
+<span class="sig-name descname"><span class="pre">build_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationGraph.build_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationGraph.build_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build relation between each score based on Favour Relation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationGraph.calculate_criteria_rank">
+<span class="sig-name descname"><span class="pre">calculate_criteria_rank</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationGraph.calculate_criteria_rank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationGraph.calculate_criteria_rank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output find ranking for each criteria rating
+:returns: array of ranking</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationGraph.dfs">
+<span class="sig-name descname"><span class="pre">dfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationGraph.dfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationGraph.dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the implementation of Deep First Search (DFS) method to find loop in the graph
+:param start_node: node index to search
+:param end_node: node index to search</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationGraph.get_fr_ranks">
+<span class="sig-name descname"><span class="pre">get_fr_ranks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationGraph.get_fr_ranks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationGraph.get_fr_ranks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thi is the method to execute all the steps to get Favour Relation ranks
+:returns: array of FR rank score (the higher, the better)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationGraph.partition_graph">
+<span class="sig-name descname"><span class="pre">partition_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationGraph.partition_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationGraph.partition_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partition graph nodes into Strongly Connected Components (SCC), based on the loop connection</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationGraph.perform_level_sorting">
+<span class="sig-name descname"><span class="pre">perform_level_sorting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationGraph.perform_level_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationGraph.perform_level_sorting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the rank of SCC</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationRanking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">FavourRelationRanking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationRanking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationRanking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Provided by ‘Drechsler, N., Drechsler, R., Becker, B.: Multi-objective Optimisation Based on Relation favour.
+In: Zitzler, E., Deb, K., Thiele, L., Coello Coello, C.A., Corne, D. (eds.) EMO 2001. LNCS, vol. 1993, pp. 154–166.
+Springer, Heidelberg (2001)’</p>
+<p>For each pair of solutions, company number of objectives (criteria) that are better, the solution with the higher
+number is favorable than the other solution with the smaller number. A graph is constructed with ‘favour’ relation.
+all nodes (solutions) will be partitioned into ‘Satisfiability Classes’ based on the ‘cycle’. Then solutions in the
+same SC has the same rank, the rank of the solution will be determined by the rank of SCs, which do have ‘cycle’
+relations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationRanking.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationRanking.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationRanking.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Favour Relation Ranking
+:param criteria_ratings: list of criteria rankings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of Favour Relation Rankings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.FavourRelationRanking.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#FavourRelationRanking.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.FavourRelationRanking.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating prediction. default to None
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.GlobalDetriment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">GlobalDetriment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#GlobalDetriment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.GlobalDetriment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Proposed by ‘Mario Garza-Fabre1, Gregorio Toscano Pulido1, and Carlos A. Coello Coello2,
+Ranking Methods for Many-Objective Optimization,
+A. Hernandez Aguirre et al. (Eds.): MICAI 2009, LNAI 5845, pp. 633–645, 2009. ,
+Springer-Verlag Berlin Heidelberg 2009’
+It calculates the degree that each solution is better than others by aggregating the difference of
+each objective.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.GlobalDetriment.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#GlobalDetriment.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.GlobalDetriment.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Global Detriment rank for each ratings
+:param criteria_ratings: an array of criteria ratings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an array of Global Detriment rank score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.GlobalDetriment.sort_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sort_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#GlobalDetriment.sort_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.GlobalDetriment.sort_cuda_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA kernel function to dominated sort
+:param ratings: two dimension array with ratings for multiple users
+:param num_items: one dimension array with only one element
+:param ranks: output variable for rankings
+:param dominated_scores: used for local sort</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.KDominance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">KDominance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#KDominance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.KDominance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Reference:
+M. Farina and P. Amato, A Fuzzy Definition of “Optimality” for Many-Criteria Optimization Problems,
+IEEE Transactions on Systems, Man, and Cybernetics, Part A: Systems and Humans, Vol 34, No 3. May 2004
+Main idea: apply dominance relations allowing some inferior objectives</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.KDominance.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#KDominance.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.KDominance.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Global Detriment rank for each ratings
+:param criteria_ratings: an array of criteria ratings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an array of ranking score based on k-optimality</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.KDominance.sort_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sort_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#KDominance.sort_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.KDominance.sort_cuda_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA kernel function to dominated sort
+:param ratings: two dimension array with ratings for multiple users
+:param parameters: one dimension array with parameter values
+:param ranks: output variable for rankings
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.KDominance.sort_gpu">
+<span class="sig-name descname"><span class="pre">sort_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#KDominance.sort_gpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.KDominance.sort_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform non dominated sort in GPU CUDA platform. If the parameter is different, the subclass must implement
+its own method
+:param ratings: two-dimensional array
+:param num_items: number of items per user id
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.LayeringRanking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">LayeringRanking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#LayeringRanking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.LayeringRanking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Proposed by ‘Yuan, Xu, Wang, Evolutionary Many-Objective Optimization Using Ensemble Fitness Ranking,
+GECCO’14, July 12-16, 2014, Vancouver, BC, Canada’
+It uses multiple fitness value function to sort through the whole solution set.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.LayeringRanking.calculate_fitness_values">
+<span class="sig-name descname"><span class="pre">calculate_fitness_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">best_solution</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#LayeringRanking.calculate_fitness_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.LayeringRanking.calculate_fitness_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate fitness values for each solution for all fitness functions
+:param criteria_ratings: an array of criteria ratings
+:param best_solution: a one dimension array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an array of fitness values, dim = [criteria_ratings.shape[0], len(self.fitness_functions_config)]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.LayeringRanking.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#LayeringRanking.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.LayeringRanking.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Global Detriment rank for each rating
+:param criteria_ratings: an array of criteria ratings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an array of Global Detriment rank score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.LayeringRanking.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#LayeringRanking.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.LayeringRanking.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating for each (user, item) pair
+:param dominated_scores: the Pareto dominated score, used only for sub sort</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.LayeringRanking.sort_gpu">
+<span class="sig-name descname"><span class="pre">sort_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#LayeringRanking.sort_gpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.LayeringRanking.sort_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform non dominated sort in GPU CUDA platform
+:param ratings: two-dimensional array
+:param num_items: number of items per user id
+:param dominated_scores: used for sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MaximumRanking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">MaximumRanking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MaximumRanking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MaximumRanking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>A ranking method provided by ‘’Bentley, P.J., Wakefield, J.P.: Finding Acceptable Solutions in the Pareto-Optimal
+Range using Multiobjective Genetic Algorithms. In: Chawdhry, P.K., Roy, R., Pant, R.K. (eds.) Soft Computing in
+Engineering Design and Manufacturing. Part 5, June 1997, pp. 231–240. Springer, London (1997) ‘</p>
+<p>For each solution, get the ranking score for each criterion and takes max or min among all criteria</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MaximumRanking.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MaximumRanking.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MaximumRanking.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating prediction. default to None
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">MultiCriteriaSort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bigger_is_better</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is the base class for all Pareto Sort algorithms</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be implemented in sub class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.get_sorting_label_index">
+<span class="sig-name descname"><span class="pre">get_sorting_label_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.get_sorting_label_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.get_sorting_label_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get index in the criteria label list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.greater_equal">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">greater_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lt1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lt2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.greater_equal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.greater_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.less_equal">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">less_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lt1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lt2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.less_equal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.less_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.lp_norm">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lp_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rating</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.lp_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.lp_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate L^p norm
+reference: Yuan, Xu, Wang, Evolutionary Many-Objective Optimization Using Ensemble Fitness Ranking,
+GECCO’14, July 12-16, 2014, Vancouver, BC, Canada
+:param rating: two dimension array
+:param ideal: one dimension array, dim = rating.shape[1]
+:param p: real number &gt;= 1
+:param weight: one dimension array, dim = rating.shape[1], with all positive element, and sum = 1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array, dim = rating.shape[0]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.min_max_scale">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min_max_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.min_max_scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.min_max_scale" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>scale value in score tensor to value in [lower_bound, upper_bound] with min max method:</dt><dd><p>v’ = (v - min(score)) / (max(score) - min(score)) * (upper_bound - lower_bound) + lower_bound</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>score</strong> – a tensor object</p></li>
+<li><p><strong>upper_bound</strong> – upper bound of the scaled score</p></li>
+<li><p><strong>lower_bound</strong> – lower bound of the scaled score</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a rescaled tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.pbi_norm">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pbi_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rating</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.pbi_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.pbi_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate L^p norm
+reference: Yuan, Xu, Wang, Evolutionary Many-Objective Optimization Using Ensemble Fitness Ranking,
+GECCO’14, July 12-16, 2014, Vancouver, BC, Canada
+:param rating: two dimension array
+:param ideal: one dimension array, dim = rating.shape[1]
+:param weight: one dimension array, dim = rating.shape[1], with all positive element, and sum = 1
+:param theta: a real number &gt; 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array, dim = rating.shape[0]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.setHistoryItems">
+<span class="sig-name descname"><span class="pre">setHistoryItems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">history_items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.setHistoryItems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.setHistoryItems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating prediction. default to None
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.sort_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sort_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.sort_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.sort_cuda_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA kernel function to sort. Need to be implemented for each subclass
+:param ratings: two dimension array with ratings for multiple users
+:param num_items: one dimension array with only one element
+:param ranks: output variable for rankings
+:param dominated_scores: used for local sort</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.sort_gpu">
+<span class="sig-name descname"><span class="pre">sort_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.sort_gpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.sort_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform non dominated sort in GPU CUDA platform. If the parameter is different, the subclass must implement
+its own method
+:param ratings: two-dimensional array
+:param num_items: number of items per user id
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.sort_parallel">
+<span class="sig-name descname"><span class="pre">sort_parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.sort_parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.sort_parallel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method to perform sorting (self.cpu_sort_algorithm()) for a given user in CPU parallel mode
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.MultiCriteriaSort.tchebycheff_norm">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tchebycheff_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rating</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#MultiCriteriaSort.tchebycheff_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.MultiCriteriaSort.tchebycheff_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate L^p norm
+reference: Yuan, Xu, Wang, Evolutionary Many-Objective Optimization Using Ensemble Fitness Ranking,
+GECCO’14, July 12-16, 2014, Vancouver, BC, Canada
+:param rating: two dimension array
+:param ideal: one dimension array, dim = rating.shape[1]
+:param weight: one dimension array, dim = rating.shape[1], with all positive element, and sum = 1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array, dim = rating.shape[0]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.OverallRatingRanking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">OverallRatingRanking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#OverallRatingRanking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.OverallRatingRanking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Use the overall rating as ranking score</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.OverallRatingRanking.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#OverallRatingRanking.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.OverallRatingRanking.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating prediction. default to None
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.PreferenceOrderRanking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">PreferenceOrderRanking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#PreferenceOrderRanking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.PreferenceOrderRanking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Implement the Preference Order Ranking, proposed by:
+di Pierro, Khu, Savic, An Investigation on Preference Order – Ranking Scheme for Multi Objective Evolutionary
+Optimization, IEEE Transactions on Evolutionary Computation, 11(1), 17-45 (2007)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.PreferenceOrderRanking.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#PreferenceOrderRanking.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.PreferenceOrderRanking.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate preference order ranking score for items of an user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.PreferenceOrderRanking.is_efficient">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_efficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#PreferenceOrderRanking.is_efficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.PreferenceOrderRanking.is_efficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if ratings[idx] is k-efficient
+:param idx: index of rating to be evaluated
+:param ratings: list of criteria ratings
+:param k: the order of efficiency, k in [1, num_of_criteria]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.PreferenceOrderRanking.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#PreferenceOrderRanking.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.PreferenceOrderRanking.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating for each (user, item) pair
+:param dominated_scores: the Pareto dominated score, used only for sub sort</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.PreferenceOrderRanking.sort_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sort_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#PreferenceOrderRanking.sort_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.PreferenceOrderRanking.sort_cuda_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA kernel function to dominated sort
+:param ratings: two dimension array with ratings for multiple users
+:param num_items: one dimension array with only one element
+:param ranks: output variable for rankings</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.PreferenceOrderRanking.sort_gpu">
+<span class="sig-name descname"><span class="pre">sort_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#PreferenceOrderRanking.sort_gpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.PreferenceOrderRanking.sort_gpu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform non dominated sort in GPU CUDA platform
+:param ratings: two-dimensional array
+:param num_items: number of items per user id
+:param dominated_scores: the Pareto dominated score, used only for sub sort</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>one dimension array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.ProfitGain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">ProfitGain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#ProfitGain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.ProfitGain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Proposed by ‘Mario Garza-Fabre1, Gregorio Toscano Pulido1, and Carlos A. Coello Coello2,
+Ranking Methods for Many-Objective Optimization,
+A. Hernandez Aguirre et al. (Eds.): MICAI 2009, LNAI 5845, pp. 633–645, 2009. ,
+Springer-Verlag Berlin Heidelberg 2009’
+It calculates the max gain of this solution comparing with all other solutions.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.ProfitGain.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#ProfitGain.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.ProfitGain.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate Global Detriment rank for each ratings
+:param criteria_ratings: an array of criteria ratings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an array of Global Detriment rank score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.ProfitGain.sort_cuda_kernel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sort_cuda_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ranks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dominated_scores</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#ProfitGain.sort_cuda_kernel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.ProfitGain.sort_cuda_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA kernel function to dominated sort
+:param ratings: two dimension array with ratings for multiple users
+:param num_items: one dimension array with only one element
+:param ranks: output variable for rankings
+:param dominated_scores: used for local sort</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.WeightedSumRanking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">WeightedSumRanking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#WeightedSumRanking"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.WeightedSumRanking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.model.pareto_sort.MultiCriteriaSort" title="mcreckit.model.pareto_sort.MultiCriteriaSort"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaSort</span></code></a></p>
+<p>Simply takes weighted sum of all criteria score</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.WeightedSumRanking.cpu_sort_algorithm">
+<span class="sig-name descname"><span class="pre">cpu_sort_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#WeightedSumRanking.cpu_sort_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.WeightedSumRanking.cpu_sort_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be implemented in sub class</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.WeightedSumRanking.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interaction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criteria_ratings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overall_ratings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#WeightedSumRanking.sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.WeightedSumRanking.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>A standard interface to perform the sort.
+:param interaction: a tensor of user item pair
+:param criteria_ratings: tensor of criteria ratings for each (user, item) pair
+:param overall_ratings: tensor of overall rating prediction. default to None
+:param dominated_scores: item dominated scores, used to sub sorting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a tensor object with ranking score for each (user, item) pair</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mcreckit.model.pareto_sort.greater_equal">
+<span class="sig-prename descclassname"><span class="pre">mcreckit.model.pareto_sort.</span></span><span class="sig-name descname"><span class="pre">greater_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lt1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lt2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/model/pareto_sort.html#greater_equal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.model.pareto_sort.greater_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-mcreckit.model">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mcreckit.model" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mcreckit.data.dataset.html" class="btn btn-neutral float-left" title="mcreckit.data.dataset package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mcreckit.model.multi_criteria_recommender.html" class="btn btn-neutral float-right" title="mcreckit.model.multi_criteria_recommender package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yong Zheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

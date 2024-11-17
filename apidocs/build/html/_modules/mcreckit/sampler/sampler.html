@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mcreckit.sampler.sampler &mdash; MCRecKit 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            MCRecKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mcreckit/modules.html">MCRecKit</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">MCRecKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mcreckit.sampler.sampler</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mcreckit.sampler.sampler</h1><div class="highlight"><pre>
+<span></span><span class="c1"># @Time : 2024/10/24</span>
+<span class="c1"># @Author : David Wang, Yong Zheng, Qin Ruan</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">recbole.sampler</span> <span class="kn">import</span> <span class="n">Sampler</span>
+
+
+<div class="viewcode-block" id="MCSampler"><a class="viewcode-back" href="../../../mcreckit/mcreckit.sampler.html#mcreckit.sampler.sampler.MCSampler">[docs]</a><span class="k">class</span> <span class="nc">MCSampler</span><span class="p">(</span><span class="n">Sampler</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;MCSampler with overridden functions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phases</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="n">neg_sampling</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">neg_sampling</span> <span class="o">=</span> <span class="n">neg_sampling</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">MCSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">phases</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MCSampler.get_used_ids"><a class="viewcode-back" href="../../../mcreckit/mcreckit.sampler.html#mcreckit.sampler.sampler.MCSampler.get_used_ids">[docs]</a>    <span class="k">def</span> <span class="nf">get_used_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Used item_ids is the same as positive item_ids.</span>
+<span class="sd">            Key is phase, and value is a numpy.ndarray which index is user_id, and element is a set of item_ids.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># this dictionary has used item id for each user in three dataset: training, evaluation and teting</span>
+        <span class="n">used_item_id</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="c1"># for each user, set up an empty set</span>
+        <span class="c1"># DW: used_item_id[&#39;valid&#39;] = used_item_id[&#39;train&#39;] and {used id in valid dataset}</span>
+        <span class="c1"># DW: used_item_id[&#39;test&#39;] = used_item_id[&#39;valid&#39;] and {used id in testing dataset}</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_num</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">phase</span><span class="p">,</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span><span class="p">):</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">set</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">last</span><span class="p">])</span>
+            <span class="c1"># for each user_id, find used item id</span>
+            <span class="k">for</span> <span class="n">uid</span><span class="p">,</span> <span class="n">iid</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">inter_feat</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">uid_field</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">dataset</span><span class="o">.</span><span class="n">inter_feat</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">iid_field</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()):</span>
+                <span class="n">cur</span><span class="p">[</span><span class="n">uid</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="n">used_item_id</span><span class="p">[</span><span class="n">phase</span><span class="p">]</span> <span class="o">=</span> <span class="n">cur</span>
+
+        <span class="c1"># check if testing set has all the items for some user</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">neg_sampling</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">used_item_set</span> <span class="ow">in</span> <span class="n">used_item_id</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">used_item_set</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_num</span><span class="p">:</span>  <span class="c1"># [pad] is a item.</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s1">&#39;Some users have interacted with all items, &#39;</span>
+                        <span class="s1">&#39;which we can not sample negative items for them. &#39;</span>
+                        <span class="s1">&#39;Please set `user_inter_num_interval` to filter those users.&#39;</span>
+                    <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">used_item_id</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yong Zheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

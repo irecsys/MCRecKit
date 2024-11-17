@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>recbole.utils.utils &mdash; MCRecKit 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            MCRecKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../mcreckit/modules.html">MCRecKit</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">MCRecKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">recbole.utils.utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for recbole.utils.utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># @Time   : 2020/7/17</span>
+<span class="c1"># @Author : Shanlei Mu</span>
+<span class="c1"># @Email  : slmu@ruc.edu.cn</span>
+
+<span class="c1"># UPDATE</span>
+<span class="c1"># @Time   : 2021/3/8</span>
+<span class="c1"># @Author : Jiawei Guan</span>
+<span class="c1"># @Email  : guanjw@ruc.edu.cn</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">recbole.utils.utils</span>
+<span class="sd">################################</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.utils.tensorboard</span> <span class="kn">import</span> <span class="n">SummaryWriter</span>
+
+<span class="kn">from</span> <span class="nn">recbole.utils.enum_type</span> <span class="kn">import</span> <span class="n">ModelType</span>
+
+
+<span class="k">def</span> <span class="nf">get_local_time</span><span class="p">():</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get current time</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: current time</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%b-</span><span class="si">%d</span><span class="s1">-%Y_%H-%M-%S&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cur</span>
+
+
+<span class="k">def</span> <span class="nf">ensure_dir</span><span class="p">(</span><span class="n">dir_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Make sure the directory exists, if it does not exist, create it</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dir_path (str): directory path</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dir_path</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Automatically select model class based on model name</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model_name (str): model name</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Recommender: model class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model_submodule</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;general_recommender&#39;</span><span class="p">,</span> <span class="s1">&#39;context_aware_recommender&#39;</span><span class="p">,</span> <span class="s1">&#39;sequential_recommender&#39;</span><span class="p">,</span> <span class="s1">&#39;knowledge_aware_recommender&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;exlib_recommender&#39;</span>
+    <span class="p">]</span>
+
+    <span class="n">model_file_name</span> <span class="o">=</span> <span class="n">model_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">model_module</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">submodule</span> <span class="ow">in</span> <span class="n">model_submodule</span><span class="p">:</span>
+        <span class="n">module_path</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;recbole.model&#39;</span><span class="p">,</span> <span class="n">submodule</span><span class="p">,</span> <span class="n">model_file_name</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">importlib</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">find_spec</span><span class="p">(</span><span class="n">module_path</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">):</span>
+            <span class="n">model_module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">module_path</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">model_module</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`model_name` [</span><span class="si">{}</span><span class="s1">] is not the name of an existing model.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">model_name</span><span class="p">))</span>
+    <span class="n">model_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model_module</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model_class</span>
+
+
+<span class="k">def</span> <span class="nf">get_trainer</span><span class="p">(</span><span class="n">model_type</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Automatically select trainer class based on model type and model name</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model_type (ModelType): model type</span>
+<span class="sd">        model_name (str): model name</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Trainer: trainer class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s1">&#39;recbole.trainer&#39;</span><span class="p">),</span> <span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;Trainer&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="n">ModelType</span><span class="o">.</span><span class="n">KNOWLEDGE</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s1">&#39;recbole.trainer&#39;</span><span class="p">),</span> <span class="s1">&#39;KGTrainer&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="n">ModelType</span><span class="o">.</span><span class="n">TRADITIONAL</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s1">&#39;recbole.trainer&#39;</span><span class="p">),</span> <span class="s1">&#39;TraditionalTrainer&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s1">&#39;recbole.trainer&#39;</span><span class="p">),</span> <span class="s1">&#39;Trainer&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">early_stopping</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">best</span><span class="p">,</span> <span class="n">cur_step</span><span class="p">,</span> <span class="n">max_step</span><span class="p">,</span> <span class="n">bigger</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot; validation-based early stopping</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        value (float): current result</span>
+<span class="sd">        best (float): best result</span>
+<span class="sd">        cur_step (int): the number of consecutive steps that did not exceed the best result</span>
+<span class="sd">        max_step (int): threshold steps for stopping</span>
+<span class="sd">        bigger (bool, optional): whether the bigger the better</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple:</span>
+<span class="sd">        - float,</span>
+<span class="sd">          best result after this step</span>
+<span class="sd">        - int,</span>
+<span class="sd">          the number of consecutive steps that did not exceed the best result after this step</span>
+<span class="sd">        - bool,</span>
+<span class="sd">          whether to stop</span>
+<span class="sd">        - bool,</span>
+<span class="sd">          whether to update</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">stop_flag</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">update_flag</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">bigger</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="n">best</span><span class="p">:</span>
+            <span class="n">cur_step</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="n">update_flag</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cur_step</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">cur_step</span> <span class="o">&gt;</span> <span class="n">max_step</span><span class="p">:</span>
+                <span class="n">stop_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">best</span><span class="p">:</span>
+            <span class="n">cur_step</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="n">update_flag</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cur_step</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">cur_step</span> <span class="o">&gt;</span> <span class="n">max_step</span><span class="p">:</span>
+                <span class="n">stop_flag</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">best</span><span class="p">,</span> <span class="n">cur_step</span><span class="p">,</span> <span class="n">stop_flag</span><span class="p">,</span> <span class="n">update_flag</span>
+
+
+<span class="k">def</span> <span class="nf">calculate_valid_score</span><span class="p">(</span><span class="n">valid_result</span><span class="p">,</span> <span class="n">valid_metric</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot; return valid score from valid result</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        valid_result (dict): valid result</span>
+<span class="sd">        valid_metric (str, optional): the selected metric in valid result for valid score</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: valid score</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">valid_metric</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">valid_result</span><span class="p">[</span><span class="n">valid_metric</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">valid_result</span><span class="p">[</span><span class="s1">&#39;Recall@10&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">dict2str</span><span class="p">(</span><span class="n">result_dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot; convert result dict to str</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        result_dict (dict): result dict</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: result str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="s1">&#39;    &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">metric</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+
+
+<div class="viewcode-block" id="init_seed"><a class="viewcode-back" href="../../../mcreckit/mcreckit.utils.html#mcreckit.utils.init_seed">[docs]</a><span class="k">def</span> <span class="nf">init_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">reproducibility</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot; init random seed for random functions in numpy, torch, cuda and cudnn</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        seed (int): random seed</span>
+<span class="sd">        reproducibility (bool): Whether to require reproducibility</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">reproducibility</span><span class="p">:</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<span class="k">def</span> <span class="nf">get_tensorboard</span><span class="p">(</span><span class="n">logger</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot; Creates a SummaryWriter of Tensorboard that can log PyTorch models and metrics into a directory for </span>
+<span class="sd">    visualization within the TensorBoard UI.</span>
+<span class="sd">    For the convenience of the user, the naming rule of the SummaryWriter&#39;s log_dir is the same as the logger.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        logger: its output filename is used to name the SummaryWriter&#39;s log_dir.</span>
+<span class="sd">                If the filename is not available, we will name the log_dir according to the current time.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        SummaryWriter: it will write out events and summaries to the event file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base_path</span> <span class="o">=</span> <span class="s1">&#39;log_tensorboard&#39;</span>
+
+    <span class="n">dir_name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="s2">&quot;baseFilename&quot;</span><span class="p">):</span>
+            <span class="n">dir_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="s1">&#39;baseFilename&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="n">dir_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dir_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">-</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">get_local_time</span><span class="p">())</span>
+
+    <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">dir_name</span><span class="p">)</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">SummaryWriter</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">writer</span>
+
+
+<span class="k">def</span> <span class="nf">get_gpu_usage</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot; Return the reserved memory and total memory of given device in a string.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        device: cuda.device. It is the device that the model run on.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: it contains the info about reserved memory and total memory of given device.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">reserved</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">max_memory_reserved</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">**</span> <span class="mi">3</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_properties</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">total_memory</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">**</span> <span class="mi">3</span>
+
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1"> G/</span><span class="si">{:.2f}</span><span class="s1"> G&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reserved</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yong Zheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

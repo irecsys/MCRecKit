@@ -1,0 +1,870 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mcreckit.trainer package &mdash; MCRecKit 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mcreckit.utils package" href="mcreckit.utils.html" />
+    <link rel="prev" title="mcreckit.sampler package" href="mcreckit.sampler.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MCRecKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">MCRecKit</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="check_gpu.html">check_gpu module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="check_torch.html">check_torch module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="mcreckit.html">mcreckit package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="mcreckit.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.config.html">mcreckit.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.data.html">mcreckit.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.model.html">mcreckit.model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.sampler.html">mcreckit.sampler package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">mcreckit.trainer package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcreckit.utils.html">mcreckit.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mcreckit.html#module-mcreckit">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="run_config.html">run_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">setup module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MCRecKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">MCRecKit</a></li>
+          <li class="breadcrumb-item"><a href="mcreckit.html">mcreckit package</a></li>
+      <li class="breadcrumb-item active">mcreckit.trainer package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/mcreckit/mcreckit.trainer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mcreckit-trainer-package">
+<h1>mcreckit.trainer package<a class="headerlink" href="#mcreckit-trainer-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-mcreckit.trainer.trainer">
+<span id="mcreckit-trainer-trainer-module"></span><h2>mcreckit.trainer.trainer module<a class="headerlink" href="#module-mcreckit.trainer.trainer" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CombRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">CombRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CombRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CombRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.
+‘criteria_model’ and ‘overall_model’ must be of  ModelType.MULTICRITERIA</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CombRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CombRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CombRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+This method is called to evaluate the trained criteria model and overall rating model, not called in self.fit()
+:param eval_data:
+:param load_best_model:
+:param model_file:
+:param show_progress:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CombRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CombRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CombRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train underlying model based on the train data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaNNCFTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">CriteriaNNCFTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaNNCFTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaNNCFTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">CriteriaRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+:param eval_data:
+:param load_best_model:
+:param model_file:
+:param show_progress:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>call different fit() method based on config[‘parallel’]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaRPTrainer.parallel_fit">
+<span class="sig-name descname"><span class="pre">parallel_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.parallel_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaRPTrainer.parallel_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run general model fit() method in parallel for each criterion</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaRPTrainer.process_fit">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.process_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaRPTrainer.process_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a wrapper for fit() method of general model, used in multiprocessing mode
+:param args: a dictionary object with key:</p>
+<blockquote>
+<div><p>‘train_data’, ‘valid_data’, ‘verbose’, ‘saved’, ‘show_progress’</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>best_valid_result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaRPTrainer.serial_fit">
+<span class="sig-name descname"><span class="pre">serial_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.serial_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaRPTrainer.serial_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run general model fit() method in serial model for each criteria, has more detail and clear output</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaSortTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">CriteriaSortTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaSortTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaSortTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaSortTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaSortTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaSortTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+This method is called to evaluate the trained criteria model and overall rating model, not called in self.fit()
+:param eval_data:
+:param load_best_model:
+:param model_file:
+:param show_progress:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.CriteriaSortTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaSortTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.CriteriaSortTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train underlying model based on the train data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.DeepCriteriaChainTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">DeepCriteriaChainTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#DeepCriteriaChainTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.DeepCriteriaChainTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.DeepCriteriaChainTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#DeepCriteriaChainTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.DeepCriteriaChainTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+This method is called to evaluate the trained sub model, not called in self.fit()
+:param eval_data:
+:param load_best_model:
+:param model_file:
+:param show_progress:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.DeepCriteriaChainTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#DeepCriteriaChainTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.DeepCriteriaChainTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model based on the train data and the valid data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_data</strong> (<em>DataLoader</em>) – the train data</p></li>
+<li><p><strong>valid_data</strong> (<em>DataLoader</em><em>, </em><em>optional</em>) – the valid data, default: None.
+If it’s None, the early_stopping is invalid.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to write training and evaluation information to logger, default: True</p></li>
+<li><p><strong>saved</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to save the model parameters, default: True</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of training epoch and evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>callback_fn</strong> (<em>callable</em>) – Optional callback function executed at end of epoch.
+Includes (epoch_idx, valid_score) input arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>best valid score and best valid result. If valid_data is None, it returns (-1, None)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(float, dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.DeepCriteriaChainTrainer.update_data_set">
+<span class="sig-name descname"><span class="pre">update_data_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicted_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_idx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#DeepCriteriaChainTrainer.update_data_set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.DeepCriteriaChainTrainer.update_data_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>predict estimation of the next label
+:param data_set: data set including user_id, item_id
+:param predicted_score: predicted score of previous trained criteria label
+:param label_idx: index of label to be predicted in the criteria_label list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>data set containing ‘predicted_label_name’ tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.HybridRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">HybridRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#HybridRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.HybridRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>HybridRPTrainer is designed for HybridRP model, which takes weighted sum of multiple rating prediction model</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.HybridRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#HybridRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.HybridRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+This method is called to evaluate the trained sub model, not called in self.fit()
+:param eval_data:
+:param load_best_model:
+:param model_file:
+:param show_progress:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.HybridRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#HybridRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.HybridRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train underlying model based on the train data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.JointRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">JointRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.JointRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>A trainer class for JointRP model. Only evaluate() method need to be implemented</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.JointRPTrainer.criteria_evaluate">
+<span class="sig-name descname"><span class="pre">criteria_evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">struct</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer.criteria_evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.JointRPTrainer.criteria_evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate rating prediction for each criteria and  take the average
+:param struct: a DataStruct object with</p>
+<blockquote>
+<div><p>‘data.label’ for true criteria rating
+‘rec.score’ for predicted criteria rating</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary with key as metric name and value as the metric value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.JointRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.JointRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_data</strong> (<em>DataLoader</em>) – the eval data</p></li>
+<li><p><strong>load_best_model</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether load the best model in the training process, default: True.
+It should be set True, if users want to test the model after training.</p></li>
+<li><p><strong>model_file</strong> (<em>str</em><em>, </em><em>optional</em>) – the saved model file, default: None. If users want to test the previously
+trained model file, they can set this parameter.</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>eval result, key is the eval metric and value in the corresponding metric value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.JointRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.JointRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model based on the train data and the valid data.
+:param train_data: the train data
+:type train_data: DataLoader
+:param valid_data: the valid data, default: None.</p>
+<blockquote>
+<div><p>If it’s None, the early_stopping is invalid.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to write training and evaluation information to logger, default: True</p></li>
+<li><p><strong>saved</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to save the model parameters, default: True</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of training epoch and evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>callback_fn</strong> (<em>callable</em>) – Optional callback function executed at end of epoch.
+Includes (epoch_idx, valid_score) input arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>best valid score and best valid result. If valid_data is None, it returns (-1, None)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(float, dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.JointRPTrainer.print_criteria_results">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_criteria_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer.print_criteria_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.JointRPTrainer.print_criteria_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.MultiCriteriaTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">MultiCriteriaTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#MultiCriteriaTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.Trainer" title="mcreckit.trainer.trainer.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.MultiCriteriaTrainer.construct_criteria_tensor">
+<span class="sig-name descname"><span class="pre">construct_criteria_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_loader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#MultiCriteriaTrainer.construct_criteria_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer.construct_criteria_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is to construct a tenor which contain criteria rating vector
+:returns: a tensor object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.MultiCriteriaTrainer.construct_saved_model_file">
+<span class="sig-name descname"><span class="pre">construct_saved_model_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_fix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#MultiCriteriaTrainer.construct_saved_model_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer.construct_saved_model_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update self.saved_model_file name for different model training/evaluation instance.
+the model training/evaluation instance is created by multi fold evaluation, sub model or training with
+different label
+:param target: target model name, used for non ModelType.MULTICRITERIA model
+:param post_fix: test added to the end of the file name</p>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.OverallRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">OverallRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#OverallRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.OverallRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.OverallRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#OverallRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.OverallRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+:param eval_data: the eval data
+:type eval_data: DataLoader
+:param load_best_model: whether load the best model in the training process, default: True.</p>
+<blockquote>
+<div><p>It should be set True, if users want to test the model after training.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_file</strong> (<em>str</em><em>, </em><em>optional</em>) – the saved model file, default: None. If users want to test the previously
+trained model file, they can set this parameter.</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>eval result, key is the eval metric and value in the corresponding metric value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.OverallRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#OverallRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.OverallRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model based on the train data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.Trainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.trainer.</span></span><span class="sig-name descname"><span class="pre">Trainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#Trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.Trainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractTrainer</span></code></p>
+<p>The basic Trainer for basic training and evaluation strategies in recommender systems. This class defines common
+functions for training and evaluation processes of most recommender system models, including fit(), evaluate(),
+resume_checkpoint() and some other features helpful for model training and evaluation.</p>
+<p>Generally speaking, this class can serve most recommender system models, If the training process of the model is to
+simply optimize a single loss without involving any complex training strategies, such as adversarial learning,
+pre-training and so on.</p>
+<p>Initializing the Trainer needs two parameters: <cite>config</cite> and <cite>model</cite>. <cite>config</cite> records the parameters information
+for controlling training and evaluation, such as <cite>learning_rate</cite>, <cite>epochs</cite>, <cite>eval_step</cite> and so on.
+<cite>model</cite> is the instantiated object of a Model Class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.Trainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#Trainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.Trainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_data</strong> (<em>DataLoader</em>) – the eval data</p></li>
+<li><p><strong>load_best_model</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether load the best model in the training process, default: True.
+It should be set True, if users want to test the model after training.</p></li>
+<li><p><strong>model_file</strong> (<em>str</em><em>, </em><em>optional</em>) – the saved model file, default: None. If users want to test the previously
+trained model file, they can set this parameter.</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>eval result, key is the eval metric and value in the corresponding metric value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.Trainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#Trainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.Trainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model based on the train data and the valid data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_data</strong> (<em>DataLoader</em>) – the train data</p></li>
+<li><p><strong>valid_data</strong> (<em>DataLoader</em><em>, </em><em>optional</em>) – the valid data, default: None.
+If it’s None, the early_stopping is invalid.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to write training and evaluation information to logger, default: True</p></li>
+<li><p><strong>saved</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to save the model parameters, default: True</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of training epoch and evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>callback_fn</strong> (<em>callable</em>) – Optional callback function executed at end of epoch.
+Includes (epoch_idx, valid_score) input arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>best valid score and best valid result. If valid_data is None, it returns (-1, None)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(float, dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.trainer.Trainer.resume_checkpoint">
+<span class="sig-name descname"><span class="pre">resume_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resume_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#Trainer.resume_checkpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.trainer.Trainer.resume_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the model parameters information and training information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resume_file</strong> (<em>file</em>) – the checkpoint file</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mcreckit.trainer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mcreckit.trainer" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.CombRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.</span></span><span class="sig-name descname"><span class="pre">CombRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CombRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CombRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.
+‘criteria_model’ and ‘overall_model’ must be of  ModelType.MULTICRITERIA</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.CombRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CombRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CombRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+This method is called to evaluate the trained criteria model and overall rating model, not called in self.fit()
+:param eval_data:
+:param load_best_model:
+:param model_file:
+:param show_progress:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.CombRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CombRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CombRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train underlying model based on the train data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.CriteriaRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.</span></span><span class="sig-name descname"><span class="pre">CriteriaRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CriteriaRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.CriteriaRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CriteriaRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+:param eval_data:
+:param load_best_model:
+:param model_file:
+:param show_progress:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.CriteriaRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CriteriaRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>call different fit() method based on config[‘parallel’]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.CriteriaRPTrainer.parallel_fit">
+<span class="sig-name descname"><span class="pre">parallel_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.parallel_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CriteriaRPTrainer.parallel_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run general model fit() method in parallel for each criterion</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.CriteriaRPTrainer.process_fit">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.process_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CriteriaRPTrainer.process_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a wrapper for fit() method of general model, used in multiprocessing mode
+:param args: a dictionary object with key:</p>
+<blockquote>
+<div><p>‘train_data’, ‘valid_data’, ‘verbose’, ‘saved’, ‘show_progress’</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>best_valid_result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.CriteriaRPTrainer.serial_fit">
+<span class="sig-name descname"><span class="pre">serial_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#CriteriaRPTrainer.serial_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.CriteriaRPTrainer.serial_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run general model fit() method in serial model for each criteria, has more detail and clear output</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.HybridRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.</span></span><span class="sig-name descname"><span class="pre">HybridRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#HybridRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.HybridRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>HybridRPTrainer is designed for HybridRP model, which takes weighted sum of multiple rating prediction model</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.HybridRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#HybridRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.HybridRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+This method is called to evaluate the trained sub model, not called in self.fit()
+:param eval_data:
+:param load_best_model:
+:param model_file:
+:param show_progress:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.HybridRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#HybridRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.HybridRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train underlying model based on the train data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.JointRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.</span></span><span class="sig-name descname"><span class="pre">JointRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.JointRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>A trainer class for JointRP model. Only evaluate() method need to be implemented</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.JointRPTrainer.criteria_evaluate">
+<span class="sig-name descname"><span class="pre">criteria_evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">struct</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer.criteria_evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.JointRPTrainer.criteria_evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate rating prediction for each criteria and  take the average
+:param struct: a DataStruct object with</p>
+<blockquote>
+<div><p>‘data.label’ for true criteria rating
+‘rec.score’ for predicted criteria rating</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary with key as metric name and value as the metric value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.JointRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.JointRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_data</strong> (<em>DataLoader</em>) – the eval data</p></li>
+<li><p><strong>load_best_model</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether load the best model in the training process, default: True.
+It should be set True, if users want to test the model after training.</p></li>
+<li><p><strong>model_file</strong> (<em>str</em><em>, </em><em>optional</em>) – the saved model file, default: None. If users want to test the previously
+trained model file, they can set this parameter.</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>eval result, key is the eval metric and value in the corresponding metric value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.JointRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.JointRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model based on the train data and the valid data.
+:param train_data: the train data
+:type train_data: DataLoader
+:param valid_data: the valid data, default: None.</p>
+<blockquote>
+<div><p>If it’s None, the early_stopping is invalid.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to write training and evaluation information to logger, default: True</p></li>
+<li><p><strong>saved</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to save the model parameters, default: True</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of training epoch and evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>callback_fn</strong> (<em>callable</em>) – Optional callback function executed at end of epoch.
+Includes (epoch_idx, valid_score) input arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>best valid score and best valid result. If valid_data is None, it returns (-1, None)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(float, dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.JointRPTrainer.print_criteria_results">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_criteria_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria_result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#JointRPTrainer.print_criteria_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.JointRPTrainer.print_criteria_results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.MultiCriteriaTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.</span></span><span class="sig-name descname"><span class="pre">MultiCriteriaTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#MultiCriteriaTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.MultiCriteriaTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.Trainer" title="mcreckit.trainer.trainer.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.MultiCriteriaTrainer.construct_criteria_tensor">
+<span class="sig-name descname"><span class="pre">construct_criteria_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_loader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#MultiCriteriaTrainer.construct_criteria_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.MultiCriteriaTrainer.construct_criteria_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is to construct a tenor which contain criteria rating vector
+:returns: a tensor object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.MultiCriteriaTrainer.construct_saved_model_file">
+<span class="sig-name descname"><span class="pre">construct_saved_model_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_fix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#MultiCriteriaTrainer.construct_saved_model_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.MultiCriteriaTrainer.construct_saved_model_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update self.saved_model_file name for different model training/evaluation instance.
+the model training/evaluation instance is created by multi fold evaluation, sub model or training with
+different label
+:param target: target model name, used for non ModelType.MULTICRITERIA model
+:param post_fix: test added to the end of the file name</p>
+<p>Returns:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.OverallRPTrainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.</span></span><span class="sig-name descname"><span class="pre">OverallRPTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fold_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#OverallRPTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.OverallRPTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mcreckit.trainer.trainer.MultiCriteriaTrainer" title="mcreckit.trainer.trainer.MultiCriteriaTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiCriteriaTrainer</span></code></a></p>
+<p>MultiCriteriaTrainer is designed for multi criteria models, which set the epoch to 1 whatever the config.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.OverallRPTrainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#OverallRPTrainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.OverallRPTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.
+:param eval_data: the eval data
+:type eval_data: DataLoader
+:param load_best_model: whether load the best model in the training process, default: True.</p>
+<blockquote>
+<div><p>It should be set True, if users want to test the model after training.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_file</strong> (<em>str</em><em>, </em><em>optional</em>) – the saved model file, default: None. If users want to test the previously
+trained model file, they can set this parameter.</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>eval result, key is the eval metric and value in the corresponding metric value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.OverallRPTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#OverallRPTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.OverallRPTrainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model based on the train data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mcreckit.trainer.Trainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcreckit.trainer.</span></span><span class="sig-name descname"><span class="pre">Trainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">built_datasets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#Trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.Trainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractTrainer</span></code></p>
+<p>The basic Trainer for basic training and evaluation strategies in recommender systems. This class defines common
+functions for training and evaluation processes of most recommender system models, including fit(), evaluate(),
+resume_checkpoint() and some other features helpful for model training and evaluation.</p>
+<p>Generally speaking, this class can serve most recommender system models, If the training process of the model is to
+simply optimize a single loss without involving any complex training strategies, such as adversarial learning,
+pre-training and so on.</p>
+<p>Initializing the Trainer needs two parameters: <cite>config</cite> and <cite>model</cite>. <cite>config</cite> records the parameters information
+for controlling training and evaluation, such as <cite>learning_rate</cite>, <cite>epochs</cite>, <cite>eval_step</cite> and so on.
+<cite>model</cite> is the instantiated object of a Model Class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.Trainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eval_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_best_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#Trainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.Trainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model based on the eval data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_data</strong> (<em>DataLoader</em>) – the eval data</p></li>
+<li><p><strong>load_best_model</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether load the best model in the training process, default: True.
+It should be set True, if users want to test the model after training.</p></li>
+<li><p><strong>model_file</strong> (<em>str</em><em>, </em><em>optional</em>) – the saved model file, default: None. If users want to test the previously
+trained model file, they can set this parameter.</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>eval result, key is the eval metric and value in the corresponding metric value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.Trainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valid_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#Trainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.Trainer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model based on the train data and the valid data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_data</strong> (<em>DataLoader</em>) – the train data</p></li>
+<li><p><strong>valid_data</strong> (<em>DataLoader</em><em>, </em><em>optional</em>) – the valid data, default: None.
+If it’s None, the early_stopping is invalid.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to write training and evaluation information to logger, default: True</p></li>
+<li><p><strong>saved</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to save the model parameters, default: True</p></li>
+<li><p><strong>show_progress</strong> (<em>bool</em>) – Show the progress of training epoch and evaluate epoch. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>callback_fn</strong> (<em>callable</em>) – Optional callback function executed at end of epoch.
+Includes (epoch_idx, valid_score) input arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>best valid score and best valid result. If valid_data is None, it returns (-1, None)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(float, dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcreckit.trainer.Trainer.resume_checkpoint">
+<span class="sig-name descname"><span class="pre">resume_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resume_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcreckit/trainer/trainer.html#Trainer.resume_checkpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcreckit.trainer.Trainer.resume_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the model parameters information and training information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>resume_file</strong> (<em>file</em>) – the checkpoint file</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mcreckit.sampler.html" class="btn btn-neutral float-left" title="mcreckit.sampler package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mcreckit.utils.html" class="btn btn-neutral float-right" title="mcreckit.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yong Zheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
