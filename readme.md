@@ -83,3 +83,12 @@ Three data sets, including ITM-Rec, OpenTable and Yahoo!Movies, are provided in 
 "MCRecKit: An Open-Source Library for Multi-Criteria Recommendations"，
 2024 IEEE/WIC International Conference on Web Intelligence and Intelligent Agent Technology (WI-IAT). IEEE, 2024.
 
+```
+@inproceedings{mcreckit,
+    title={{MCR}ec{K}it: An Open-Source Library for Multi-Criteria Recommendations},
+    author={Zheng, Yong and Wang, David Xuejun and Ruan, Qin},
+    booktitle={2024 IEEE/WIC International Conference on Web Intelligence and Intelligent Agent Technology (WI-IAT)},
+    year={2024},
+    organization={IEEE}
+}
+```
