@@ -48,6 +48,7 @@ The library was tested by using the following environments:
 - `python==3.9.20`
 - `recbole==1.0.1`
 - `numpy==1.20.0`
+- `pandas==1.4.4`
 - `lightgbm==4.5.0`
 - `xgboost==2.1.1`
 - `numba==0.58.1`
