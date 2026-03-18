@@ -35,6 +35,6 @@ metrics: ['Recall', 'Precision', 'NDCG']
 valid_metric: Recall@10
 
 # --- OMOMany Model ---
-k_neighbors: 100              
+k_neighbors: 100
 owa_quantifier: "least"        # most, least, many
 similarity_type: "OS"         # OS or CRS

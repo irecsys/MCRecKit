@@ -60,12 +60,18 @@ Note that you may need to downgrade numpy to 1.20.0 for compatibility concerns.
 With the source code, you can use the provided script for initial usage of our library:
 
 ```bash
-python -m run_config run/CombRP_Independent.yaml
+python -m run_config run/IndNeuMF.yaml
 ```
 
 ## Data Sets
 Three data sets, including ITM-Rec, OpenTable and Yahoo!Movies, are provided in the 'dataset' folder.
 
+## MCRS Algorithms
+- IndNeuMF
+- MONeuMF
+- Multi-Criteria Ranking based on Pareto Dominance
+- MCTF: Multi-Criteria Tensor Factorization
+- OMOMany: Neighborhood CF based on OWA/TOPSIS
 
 ## Major Releases
 | Releases | Date       |
