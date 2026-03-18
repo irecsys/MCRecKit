@@ -67,11 +67,17 @@ python -m run_config run/IndNeuMF.yaml
 Three data sets, including ITM-Rec, OpenTable and Yahoo!Movies, are provided in the 'dataset' folder.
 
 ## MCRS Algorithms
-- IndNeuMF
-- MONeuMF
-- Multi-Criteria Ranking based on Pareto Dominance
-- MCTF: Multi-Criteria Tensor Factorization
-- OMOMany: Neighborhood CF based on OWA/TOPSIS
+- IndNeuMF,
+  "Multi-criteria ranking: Next generation of multi-criteria recommendation framework." IEEE Access, 2022
+- MONeuMF, 
+  "Multi-criteria collaborative filtering recommender by fusing deep neural network and matrix factorization",
+            J. Big Data, 2020
+- Multi-Criteria Ranking based on Pareto Dominance,
+  "Multi-criteria ranking: Next generation of multi-criteria recommendation framework." IEEE Access, 2022
+- MCTF: Multi-Criteria Tensor Factorization, 
+  "Multi-criteria tensor model for tourism recommender systems". Expert Systems with Applications, 2021
+- OMOMany: Neighborhood CF based on OWA/TOPSIS, 
+  "An efficient framework to combat multidimensionality in multi-criteria recommender systems". Cluster Computing, 2025
 
 ## Major Releases
 | Releases | Date       |

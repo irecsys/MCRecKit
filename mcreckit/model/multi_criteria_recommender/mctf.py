@@ -11,7 +11,7 @@ from mcreckit.utils import MCModelType
 class MCTF(MultiCriteriaRecommender):
     """
     MCTF (Multi-Criteria Tensor Factorization) model based on HOSVD.
-    Reference: Hong, M., & Jung, J. J. (2021). Multi-criteria tensor model for tourism recommender systems. Expert Systems with Applications, 170, 114537.
+    Reference: Hong, M., & Jung, J. J. (2021). "Multi-criteria tensor model for tourism recommender systems". Expert Systems with Applications, 170, 114537.
     """
     type = MCModelType.MULTICRITERIA
 

@@ -8,7 +8,7 @@ from mcreckit.utils import MCModelType
 class OMOMany(MultiCriteriaRecommender):
     '''
     Using OWA/TOPSIS to aggregate multi-criteria ratings into a single score for similarity calculation.
-    Reference: Anwar, K., Wasid, M., Zafar, A., & Iqbal, A. (2025). An efficient framework to combat multidimensionality in multi-criteria recommender systems. Cluster Computing, 28(4), 245.
+    Reference: Anwar, K., Wasid, M., Zafar, A., & Iqbal, A. (2025). "An efficient framework to combat multidimensionality in multi-criteria recommender systems". Cluster Computing, 28(4), 245.
     '''
     type = MCModelType.MULTICRITERIA
 
