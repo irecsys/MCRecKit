@@ -4,3 +4,5 @@ from mcreckit.model.multi_criteria_recommender.combrp import CombRP
 from mcreckit.model.multi_criteria_recommender.moneumf import MONeuMF
 from mcreckit.model.multi_criteria_recommender.hybridrp import HybridRP
 from mcreckit.model.multi_criteria_recommender.criteriasort import CriteriaSort
+from mcreckit.model.multi_criteria_recommender.mctf import MCTF
+from mcreckit.model.multi_criteria_recommender.omomany import OMOMany

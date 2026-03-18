@@ -1,0 +1,40 @@
+gpu_id: 0
+use_gpu: True
+show_progress: False
+print_loss: False
+save_pth: False
+seed: 2024
+use_tensorboard: False
+
+# data settings
+dataset: itm
+field_separator: ","
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+LABEL_FIELD: rating
+MULTI_LABEL_FIELD: ['app', 'data', 'ease']
+RATING_RANGE: [1, 5]
+# rating threshold to determine the relevance of an item
+threshold: {'rating': 3}
+
+
+load_col: ~  # using ~ to load all columns in data
+neg_sampling: ~
+
+model: OMOMany
+learner: adam
+eval_args:
+  # split: {'RS':[0.8,0.1,0.1]}
+  split: {'CV': 5, 'parallel': True, 'num_processes': 8} # N-fold cross validation by multiprocessing
+  group_by: user
+  order: RO
+  mode: labeled
+
+topk: [10, 20, 30, 40, 50]
+metrics: ['Recall', 'Precision', 'NDCG']
+valid_metric: Recall@10
+
+# --- OMOMany Model ---
+k_neighbors: 100              
+owa_quantifier: "least"        # most, least, many
+similarity_type: "OS"         # OS or CRS
