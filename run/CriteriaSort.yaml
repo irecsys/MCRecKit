@@ -36,6 +36,8 @@ topk: [10, 20, 30]
 metrics: ['Recall', 'Precision', 'NDCG']
 valid_metric: Recall@10
 
+weight_decay: 0.001
+stopping_step: 10
 # specific settings for training models to predict multi-criteria ratings
 # using a traditional recommender to predict criteria ratings independently
 criteria_model: {'model': 'MONeuMF',
@@ -53,7 +55,8 @@ criteria_model: {'model': 'MONeuMF',
                  'use_pretrain': False,
                  'parallel': True,
                  'metrics': [ 'RMSE', 'MAE', 'AUC' ],
-                 'valid_metric': RMSE
+                 'valid_metric': RMSE,
+                 'output_activation': 'linear'
                 }
 
 # assign major sorting and subsorting algorithms

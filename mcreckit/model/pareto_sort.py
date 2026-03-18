@@ -556,35 +556,48 @@ class FastNonDominatedSort(MultiCriteriaSort):
             ranks[idx] = dominated
 
     def non_dominated_sort_gpu(self, interaction, criteria_ratings):
-        """Perform non dominated sort in GPU CUDA platform
-        Args:
-            interaction: user item interaction data
-            criteria_ratings: two-dimensional tensor
-        Return:
-             one dimension array
+        """
+        纯 PyTorch 向量化实现的 GPU 帕累托非支配排序。
+        彻底剔除 Numba 依赖，完美绕过 Windows CUDA 上下文冲突！
         """
         num_of_items = interaction.interaction[self.ITEM_ID].unique().shape[0]
         num_of_users_items = interaction.interaction[self.USER_ID].shape[0]
 
         if num_of_users_items % num_of_items != 0:
-            raise ValueError(f'User item rating is not complete, cannot use this batch sort on GPU ')
+            raise ValueError('User item rating is not complete, cannot use this batch sort on GPU')
 
-        # convert tensor to numpy array
-        ratings = criteria_ratings.cpu().numpy()
+        num_users = num_of_users_items // num_of_items
+        margin = self.error_margin
 
-        # create array to store the rank score
-        ranks = np.zeros(ratings.shape[0])
+        # 1. reshape ratings to (num_users, num_of_items, num_criteria) for easier processing
+        ratings_reshaped = criteria_ratings.view(num_users, num_of_items, -1)
 
-        # load array to GPU memory
-        ratings_gpu = cuda.to_device(ratings)
-        num_items_gpu = cuda.to_device([num_of_items, self.error_margin])
-        ranks_gpu = cuda.to_device(ranks)
+        # 2. initialize output tensor for ranks, shape is (num_users * num_of_items,)
+        ranks = torch.zeros(num_of_users_items, dtype=torch.float32, device=self.device)
 
-        # call CUDA kernel
-        self.non_dominated_sort_cuda_kernel[2000, 256](ratings_gpu, num_items_gpu, ranks_gpu)
+        # 3. iterate over each user, calculate the pairwise difference between items, and determine dominance
+        for u in range(num_users):
+            user_ratings = ratings_reshaped[u]  # shape: (num_items, num_criteria)
 
-        # return the results from GPU memory
-        return ranks_gpu.copy_to_host()
+            # user_ratings.unsqueeze(1): (N, 1, C)
+            # user_ratings.unsqueeze(0): (1, N, C)
+            # actions: subtract each item rating from every other item rating,
+            # resulting in a (N, N, C) tensor where each (i, j) slice is the difference between item i and item j across all criteria
+            diff = user_ratings.unsqueeze(1) - user_ratings.unsqueeze(0)
+
+            # Condition 1: If there exists at least one criterion where the difference > margin, then item i is greater than item j
+            is_greater = ~(diff < margin).any(dim=-1)
+            # Condition 2: If for all criteria, the difference is within [-margin, margin], then item i and item j are considered equal
+            is_equal = ~(diff > -margin).any(dim=-1)
+
+            # Finally, item i dominates item j if Condition 1 is true and Condition 2 is false
+            dominates = is_greater & (~is_equal)
+
+            # get the number of items that dominate each item, which is the sum of each column in the dominates matrix
+            ranks[u * num_of_items : (u + 1) * num_of_items] = dominates.sum(dim=1)
+
+        # 4. return the ranks as a 1D tensor
+        return ranks.cpu().numpy()
 
     def sort(self, interaction, criteria_ratings, overall_ratings=None):
         """Customized sort interface
@@ -1390,34 +1403,47 @@ class KDominance(MultiCriteriaSort):
             ranks[idx] = k_dominance_count
 
     def sort_gpu(self, ratings, num_items, dominated_scores=None):
-        """Perform non dominated sort in GPU CUDA platform. If the parameter is different, the subclass must implement
-        its own method
-        Args:
-            ratings: two-dimensional array
-            num_items: number of items per user id
-            dominated_scores: item dominated scores, used to sub sorting
-        Return:
-             one dimension array
+        """
+        Pure PyTorch Vectorized Implementation for K-Dominance.
         """
         if num_items is None:
             raise ValueError('Number of items is not assigned')
 
-        ranks = np.zeros(ratings.shape[0])
+        ratings_pt = torch.tensor(ratings, dtype=torch.float32, device=self.device)
+        num_users = ratings_pt.shape[0] // num_items
+        dominance_k = self.config['dominance_k']
+        num_criteria = ratings_pt.shape[1]
 
-        # load array to GPU memory
-        ratings_gpu = cuda.to_device(ratings)
-        parameters_gpu = cuda.to_device([num_items, self.config['dominance_k']])
-        ranks_gpu = cuda.to_device(ranks)
+        ratings_reshaped = ratings_pt.view(num_users, num_items, -1)
+        ranks = torch.zeros(ratings_pt.shape[0], dtype=torch.float32, device=self.device)
+
         if dominated_scores is not None:
-            dominated_scores_gpu = cuda.to_device(dominated_scores)
+            dom_pt = torch.tensor(dominated_scores, dtype=torch.float32, device=self.device)
+            dom_reshaped = dom_pt.view(num_users, num_items)
         else:
-            dominated_scores_gpu = cuda.to_device(np.zeros(ratings.shape[0]))
+            dom_reshaped = None
 
-        # call CUDA kernel
-        self.sort_cuda_kernel[2000, 256](ratings_gpu, parameters_gpu, ranks_gpu, dominated_scores_gpu)
+        for u in range(num_users):
+            user_ratings = ratings_reshaped[u]
 
-        # return the results from GPU memory
-        return ranks_gpu.copy_to_host()
+            # Pairwise difference
+            diff = user_ratings.unsqueeze(1) - user_ratings.unsqueeze(0)
+
+            # Count better and equal criteria using PyTorch sums
+            n_better = (diff > 0).sum(dim=-1)
+            n_equal = (diff == 0).sum(dim=-1)
+
+            # Apply K-Dominance mathematical condition
+            is_dominant = (n_equal < num_criteria) & (n_better >= (num_criteria - n_equal) / (dominance_k + 1))
+
+            if dom_reshaped is not None:
+                user_dom = dom_reshaped[u]
+                same_dom = (user_dom.unsqueeze(1) == user_dom.unsqueeze(0))
+                is_dominant = is_dominant & same_dom
+
+            ranks[u * num_items : (u + 1) * num_items] = is_dominant.sum(dim=1)
+
+        return ranks.cpu().numpy()
 
 
 class EpsilonDominance(MultiCriteriaSort):
@@ -1499,31 +1525,46 @@ class EpsilonDominance(MultiCriteriaSort):
             ranks[idx] = k_dominance_count
 
     def sort_gpu(self, ratings, num_items, dominated_scores=None):
-        """Perform non dominated sort in GPU CUDA platform. If the parameter is different, the subclass must implement
-        its own method
-        Args:
-            ratings: two-dimensional array
-            num_items: number of items per user id
-            dominated_scores: the Pareto dominated score, used only for sub sort
-        Return:
-             one dimension array
+        """
+        Pure PyTorch Vectorized Implementation to replace Numba CUDA kernel.
+        Avoids Windows CUDA context conflicts between PyTorch and Numba.
         """
         if num_items is None:
             raise ValueError('Number of items is not assigned')
 
-        ranks = np.zeros(ratings.shape[0])
+        # 1. Move data directly to PyTorch tensor on the correct device
+        ratings_pt = torch.tensor(ratings, dtype=torch.float32, device=self.device)
+        num_users = ratings_pt.shape[0] // num_items
+        epsilon = self.config['epsilon']
 
-        # load array to GPU memory
-        ratings_gpu = cuda.to_device(ratings)
-        parameters_gpu = cuda.to_device([num_items, self.config['epsilon']])
-        ranks_gpu = cuda.to_device(ranks)
+        # 2. Reshape to (num_users, num_items, num_criteria)
+        ratings_reshaped = ratings_pt.view(num_users, num_items, -1)
+        ranks = torch.zeros(ratings_pt.shape[0], dtype=torch.float32, device=self.device)
+
+        # 3. Handle dominated_scores for sub-sorting
         if dominated_scores is not None:
-            dominated_scores_gpu = cuda.to_device(dominated_scores)
+            dom_pt = torch.tensor(dominated_scores, dtype=torch.float32, device=self.device)
+            dom_reshaped = dom_pt.view(num_users, num_items)
         else:
-            dominated_scores_gpu = cuda.to_device(np.zeros(ratings.shape[0]))
+            dom_reshaped = None
 
-        # call CUDA kernel
-        self.sort_cuda_kernel[2000, 256](ratings_gpu, parameters_gpu, ranks_gpu, dominated_scores_gpu)
+        # 4. Vectorized dominance calculation per user
+        for u in range(num_users):
+            user_ratings = ratings_reshaped[u]
 
-        # return the results from GPU memory
-        return ranks_gpu.copy_to_host()
+            # Broadcasting to get pairwise differences: (epsilon + 1) * rating_idx - rating_k
+            diff = (epsilon + 1) * user_ratings.unsqueeze(1) - user_ratings.unsqueeze(0)
+
+            # Condition: all criteria must meet the epsilon dominance condition
+            is_better = (diff >= 0).all(dim=-1)
+
+            # If sub-sorting, only count items with the exact same dominated_score
+            if dom_reshaped is not None:
+                user_dom = dom_reshaped[u]
+                same_dom = (user_dom.unsqueeze(1) == user_dom.unsqueeze(0))
+                is_better = is_better & same_dom
+
+            # Sum the booleans to get the rank count for this batch
+            ranks[u * num_items : (u + 1) * num_items] = is_better.sum(dim=1)
+
+        return ranks.cpu().numpy()

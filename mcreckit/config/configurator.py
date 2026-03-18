@@ -21,6 +21,15 @@ class MCConfig(Config):
         if 'GENERAL_MODEL' in self.variable_config_dict:
             self._general_model_config_dict(self.variable_config_dict['GENERAL_MODEL'])
 
+    def get(self, key, default=None):
+        """
+        Return the value for key if key is in the config, else default.
+        """
+        try:
+            return self[key]
+        except KeyError:
+            return default
+
     def _init_parameters_category(self):
         """Output arguments to logs by categories
         """

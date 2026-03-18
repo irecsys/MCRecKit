@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 from recbole.model.layers import MLPLayers
 from mcreckit.model.multi_criteria_recommender.jointrp import JointRP
-
+from mcreckit.utils.utils import get_criteria_activations
 
 class MONeuMF(JointRP):
     """
@@ -57,7 +57,7 @@ class MONeuMF(JointRP):
         elif self.mlp_train:
             self.predict_layer = nn.Linear(self.mlp_hidden_size[-1], self.num_criteria).to(self.device)
 
-        self.sigmoid = nn.LeakyReLU()
+        self.sigmoid = get_criteria_activations(config)
         self.loss = nn.MSELoss()
 
         # parameters initialization

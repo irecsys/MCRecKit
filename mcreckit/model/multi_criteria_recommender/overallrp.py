@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from recbole.model.layers import MLPLayers
 from mcreckit.model.abstract_recommender import MultiCriteriaRecommender
+from mcreckit.utils.utils import get_overall_activations
 
 
 class OverallRP(MultiCriteriaRecommender):
@@ -42,7 +43,7 @@ class OverallRP(MultiCriteriaRecommender):
                                         activation='leakyrelu').to(self.device)
 
         self.predict_layer = nn.Linear(self.mlp_hidden_size[-1], 1).to(self.device)
-        self.sigmoid = nn.LeakyReLU()
+        self.sigmoid = get_overall_activations(config)
         self.loss = nn.MSELoss()
 
         # initialize weights

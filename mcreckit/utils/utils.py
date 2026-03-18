@@ -8,6 +8,52 @@ import yaml
 from recbole.utils.utils import get_model as recbole_get_model
 from sklearn.feature_selection import mutual_info_classif
 from mcreckit.utils import MCModelType
+import torch.nn as nn
+
+
+def get_activation(name):
+    if name is None:
+        name = "linear"
+
+    name = name.lower()
+
+    if name == "linear":
+        return nn.Identity()   # 推荐：真正“无激活”
+    elif name == "identity":
+        return nn.Identity()
+    elif name == "relu":
+        return nn.ReLU()
+    elif name == "leakyrelu":
+        return nn.LeakyReLU()
+    elif name == "sigmoid":
+        return nn.Sigmoid()
+    elif name == "softmax":
+        return nn.Softmax(dim=1)  # 注意 dim
+    else:
+        raise ValueError(f"Unsupported activation: {name}")
+
+def get_criteria_activations(config, default="linear"):
+    act = default
+
+    if "sub_models" not in config:
+        if "criteria_model" in config:
+            act = config["criteria_model"].get("output_activation", default)
+        else:
+            act = config.get("output_activation", default)
+
+    return get_activation(act)
+
+def get_overall_activations(config, default="linear"):
+    act = default
+
+    if "sub_models" not in config:
+        if "overall_model" in config:
+            act = config["overall_model"].get("output_activation", default)
+        else:
+            act = config.get("output_activation", default)
+
+    return get_activation(act)
+
 
 
 def get_model(model_name):

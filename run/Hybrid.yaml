@@ -36,6 +36,8 @@ topk: [10, 20, 30]
 metrics: ['Recall', 'Precision', 'NDCG']
 valid_metric: Recall@10
 
+weight_decay: 0.001
+stopping_step: 10
 # sub model settings
 ranking_weight: [0.6, 0.4] # define the weights (linear aggregation) for hybrid models
 sub_models: [
@@ -59,6 +61,7 @@ sub_models: [
                                  'valid_metric': RMSE,
                                   # model training settings
                                  'learner': adam,
+                                 'output_activation': 'linear'
                }
             },
           {'model': CombRP,
@@ -76,6 +79,7 @@ sub_models: [
                              'mf_train': True,
                              'mlp_train': True,
                              'use_pretrain': False,
+                             'output_activation': 'linear'
                             },
 
             # specific settings for overall training model
@@ -85,7 +89,8 @@ sub_models: [
                             'learning_rate': 0.00001,
                             'dropout_prob': 0.001,
                             'epochs': 3,
-                            'train_batch_size': 6000
+                            'train_batch_size': 6000,
+                            'output_activation': 'linear'
                             }
 
           }

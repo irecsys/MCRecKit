@@ -24,7 +24,7 @@ class CriteriaRP(MultiCriteriaRecommender):
         self.general_model = get_model(config['GENERAL_MODEL'])(config, dataset)
 
         # modify general model set up
-        self.general_model.sigmoid = nn.LeakyReLU()
+        # self.general_model.sigmoid = nn.LeakyReLU()
         self.general_model.loss = nn.MSELoss()
 
         self.trained_weights = {}
